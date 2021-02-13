@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout/model}">
+
+<head>
+    <title>Small Trade Manager - Consultar Produto</title>
+</head>
+<body>
+<div class="container" layout:fragment="conteudo">
+    <div class="my-3 text-center">
+        <img alt="Produto" class="img-fluid mx-3" height="50" src="img/product.svg" width="50"/>
+        <h2>Produtos</h2>
+    </div>
+
+    <form accept-charset="utf-8" action="/search_product" autocomplete="on" enctype="application/x-www-form-urlencoded" id="search_product" method="get" name="search_product" rel="noopener" target="_self">
+        <div class="form-row justify-content-center">
+            <div class="col-md-4 form-group">
+                <input class="form-control" form="search_product" id="search" name="search" placeholder="Procurar produto" type="search"/>
+            </div>
+            <div class="col-md-1 form-group">
+                <input class="btn btn-dark" form="search_product" type="submit" value="Procurar">
+            </div>
+            <div class="col-md-1 form-group">
+                <a class="btn btn-primary" href="insert_product.html">Cadastrar</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="container-fluid" layout:fragment="conteudo-tabela">
+    <table class="table table-hover table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="row">ID</th>
+            <th scope="row">Código</th>
+            <th scope="row">Nome</th>
+            <th scope="row">Fornecedor</th>
+            <th scope="row">Preço Líquido</th>
+            <th scope="row">Unidade</th>
+            <th scope="row">Peso</th>
+            <th scope="row">Quantidade</th>
+            <th scope="row">Gerenciar</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>2067293150</td>
+            <td>American Food</td>
+            <td>Burger Perk</td>
+            <td>R$ 33,90</td>
+            <td>UN</td>
+            <td>0,300 kg</td>
+            <td>1</td>
+            <td><a class="btn btn-success" href="manage_product.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>1049690302</td>
+            <td>Headset Gamer HyperX Cloud Revolver</td>
+            <td>Compubrás</td>
+            <td>R$ 890,00</td>
+            <td>UN</td>
+            <td>1,270 kg</td>
+            <td>30</td>
+            <td><a class="btn btn-success" href="manage_product.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>1020414746</td>
+            <td>Mouse Gamer Razer Viper</td>
+            <td>Syma Solutions</td>
+            <td>R$ 565,20</td>
+            <td>UN</td>
+            <td>210 g</td>
+            <td>10</td>
+            <td><a class="btn btn-success" href="manage_product.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">4</th>
+            <td>1590008059</td>
+            <td>Óleo de Soja</td>
+            <td>Cocamar</td>
+            <td>R$ 4,50</td>
+            <td>ML</td>
+            <td>900 ml</td>
+            <td>50</td>
+            <td><a class="btn btn-success" href="manage_product.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">5</th>
+            <td>1401876882</td>
+            <td>Pastel Pizza</td>
+            <td>Pastel do Roberto</td>
+            <td>R$ 7,45</td>
+            <td>UN</td>
+            <td>350 g</td>
+            <td>1</td>
+            <td><a class="btn btn-success" href="manage_product.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">6</th>
+            <td>1043257215</td>
+            <td>Pen Drive Multilaser Twist 2.0 16 GB</td>
+            <td>Compubrás</td>
+            <td>R$ 32,80</td>
+            <td>UN</td>
+            <td>20 g</td>
+            <td>20</td>
+            <td><a class="btn btn-success" href="manage_product.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">7</th>
+            <td>1040199462</td>
+            <td>Suco Purity Néctar Maracujá</td>
+            <td>Cocamar</td>
+            <td>R$ 3,30</td>
+            <td>L</td>
+            <td>1 kg</td>
+            <td>60</td>
+            <td><a class="btn btn-success" href="manage_product.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">8</th>
+            <td>1079670249</td>
+            <td>Teclado Mecânico Redragon Rudra</td>
+            <td>Compubrás</td>
+            <td>R$ 336,35</td>
+            <td>UN</td>
+            <td>1,230 kg</td>
+            <td>5</td>
+            <td><a class="btn btn-success" href="manage_product.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">9</th>
+            <td>1502498407</td>
+            <td>Torneira Gourmet Monocromada</td>
+            <td>Casas São Paulo</td>
+            <td>R$ 369,00</td>
+            <td>UN</td>
+            <td>2,500 kg</td>
+            <td>25</td>
+            <td><a class="btn btn-success" href="manage_product.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">10</th>
+            <td>1147240578</td>
+            <td>WebCam Brazil PC V5</td>
+            <td>Syma Solutions</td>
+            <td>R$ 505,75</td>
+            <td>UN</td>
+            <td>135 g</td>
+            <td>15</td>
+            <td><a class="btn btn-success" href="manage_product.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="9">Exibindo 10 produtos dos 450 cadastrados no sistema.</td>
+        </tr>
+        </tfoot>
+    </table>
+</div>
+</body>
+</html>

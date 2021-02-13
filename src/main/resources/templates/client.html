@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout/model}">
+
+<head>
+    <title>Small Trade Manager - Consultar Cliente</title>
+</head>
+<body>
+<div class="container" layout:fragment="conteudo">
+    <div class="my-3 text-center">
+        <img alt="Cliente" class="img-fluid mx-3" height="50" src="img/client.svg" width="50"/>
+        <h2>Clientes</h2>
+    </div>
+
+    <form accept-charset="utf-8" action="/search_client" autocomplete="on" enctype="application/x-www-form-urlencoded" id="search_client" method="get" name="search_client" rel="noopener" target="_self">
+        <div class="form-row justify-content-center">
+            <div class="col-md-4 form-group">
+                <input class="form-control" form="search_client" id="search" name="search" placeholder="Procurar cliente" type="search"/>
+            </div>
+            <div class="col-md-1 form-group">
+                <input class="btn btn-dark" form="search_client" type="submit" value="Procurar">
+            </div>
+            <div class="col-md-1 form-group">
+                <a class="btn btn-primary" href="insert_client.html">Cadastrar</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="container-fluid" layout:fragment="conteudo-tabela">
+    <table class="table table-hover table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="row">ID</th>
+            <th scope="row">Nome</th>
+            <th scope="row">Sobrenome</th>
+            <th scope="row">E-mail</th>
+            <th scope="row">Cidade</th>
+            <th scope="row">Estado</th>
+            <th scope="row">Telefone</th>
+            <th scope="row">Celular</th>
+            <th scope="row">Gerenciar</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Davi</td>
+            <td>Tavares Santos</td>
+            <td>davizao_tavares@hotmail.com</td>
+            <td>Alvorada do Sul</td>
+            <td>PR</td>
+            <td>(43) 3661-1414</td>
+            <td>(43) 99616-2014</td>
+            <td><a class="btn btn-success" href="manage_client.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Fernando</td>
+            <td>Silva Silvério</td>
+            <td>ssilveriofernando45@gmail.com</td>
+            <td>Tupã</td>
+            <td>SP</td>
+            <td></td>
+            <td>(14) 99628-3857</td>
+            <td><a class="btn btn-success" href="manage_client.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Geovana Izabela</td>
+            <td>Monte</td>
+            <td>ra-17026212@alunos.unicesumar.edu.br</td>
+            <td>Maringá</td>
+            <td>PR</td>
+            <td>(44) 3268-5438</td>
+            <td>(44) 99741-3593</td>
+            <td><a class="btn btn-success" href="manage_client.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">4</th>
+            <td>Gustavo</td>
+            <td>Belançon Mendes</td>
+            <td>ra99037@uem.br</td>
+            <td>Maringá</td>
+            <td>PR</td>
+            <td></td>
+            <td>(44) 99935-0978</td>
+            <td><a class="btn btn-success" href="manage_client.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">5</th>
+            <td>Héctor</td>
+            <td>Dorrighello Giacon</td>
+            <td>ra99450@uem.br</td>
+            <td>Santa Cruz do Rio Pardo</td>
+            <td>SP</td>
+            <td></td>
+            <td>(44) 99103-6647</td>
+            <td><a class="btn btn-success" href="manage_client.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">6</th>
+            <td>Letícia</td>
+            <td>Naomi Takeshiro</td>
+            <td>ra105406@uem.br</td>
+            <td>Maringá</td>
+            <td>PR</td>
+            <td></td>
+            <td>(44) 99988-1164</td>
+            <td><a class="btn btn-success" href="manage_client.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">7</th>
+            <td>Luís Cláudio</td>
+            <td>Silva</td>
+            <td>lcsilva@uem.br</td>
+            <td>Marialva</td>
+            <td>PR</td>
+            <td></td>
+            <td>(44) 99961-3565</td>
+            <td><a class="btn btn-success" href="manage_client.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">8</th>
+            <td>Luiz Joaquim</td>
+            <td>Aderaldo Amichi</td>
+            <td>luizamichi@gmail.com</td>
+            <td>Maringá</td>
+            <td>PR</td>
+            <td>(43) 3661-2014</td>
+            <td>(44) 99866-5521</td>
+            <td><a class="btn btn-success" href="manage_client.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">9</th>
+            <td>Mateus Henrique</td>
+            <td>Aderaldo Amichi</td>
+            <td>mateusamichi@gmail.com</td>
+            <td>Alvorada do Sul</td>
+            <td>PR</td>
+            <td>(44) 3037-0105</td>
+            <td>(44) 99843-7215</td>
+            <td><a class="btn btn-success" href="manage_client.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">10</th>
+            <td>Nadir</td>
+            <td>Brasilino Monte</td>
+            <td>nadirbrasilino@outlook.com</td>
+            <td>Maringá</td>
+            <td>PR</td>
+            <td></td>
+            <td>(44) 99910-0659</td>
+            <td><a class="btn btn-success" href="manage_client.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="9">Exibindo 10 clientes dos 150 cadastrados no sistema.</td>
+        </tr>
+        </tfoot>
+    </table>
+</div>
+</body>
+</html>
