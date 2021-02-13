@@ -11,7 +11,6 @@ import java.math.BigDecimal;
 @Entity
 public class ItemVenda {
 
-
     @EqualsAndHashCode.Include
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
