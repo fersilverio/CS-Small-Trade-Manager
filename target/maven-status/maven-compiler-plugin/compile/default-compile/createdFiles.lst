@@ -1,0 +1,6 @@
+com/uem/manager/service/ProdutoService.class
+com/uem/manager/controller/ProductController.class
+com/uem/manager/service/ProdutoServiceImpl.class
+com/uem/manager/repository/ProductRepository.class
+com/uem/manager/ManagerApplication.class
+com/uem/manager/model/Produto.class
