@@ -1,13 +1,16 @@
 package com.uem.manager.model;
 
-//import com.uem.simple.manager.model.enums.Origem;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-//import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+
+import com.uem.manager.model.enums.Origem;
+import com.uem.manager.model.enums.TipoProduto;
+import com.uem.manager.model.enums.Ativo;
+
+
 import java.math.BigDecimal;
-//import java.time.OffsetDateTime;
 
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -15,69 +18,75 @@ import java.math.BigDecimal;
 @Table(name = "produto")
 public class Produto {
 
-    @EqualsAndHashCode.Include
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+	@EqualsAndHashCode.Include
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
 	@Column(name = "nome")
-    private String nome;
+	private String nome;
 	/*
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "produto_fornecedor_id")
-    private Fornecedor fornecedor;
-	*/
+	 * @ManyToOne(fetch = FetchType.LAZY)
+	 * 
+	 * @JoinColumn(name = "produto_fornecedor_id") private Fornecedor fornecedor;
+	 */
 	@Column(name = "unidade")
-    private String unidade;
+	private String unidade;
 
 	@Column(name = "preco_bruto")
-    private BigDecimal precoBruto;
+	private BigDecimal precoBruto;
 
 	@Column(name = "preco_liquido")
-    private BigDecimal precoLiquido;
+	private BigDecimal precoLiquido;
 
 	@Column(name = "estoque_min")
-    private Integer estoqueMin;
+	private Integer estoqueMin;
 
 	@Column(name = "estoque_max")
-    private Integer estoqueMax;
+	private Integer estoqueMax;
 
 	@Column(name = "qtd")
-    private Integer qtd;
+	private Integer qtd;
 
 	@Column(name = "peso")
-    private Double peso;
+	private Double peso;
 
-	@Column(name = "ativo")
-    private Boolean ativo;
+	@Enumerated(EnumType.STRING)
+	private Ativo ativo;
+
+	@Enumerated(EnumType.STRING)
+	private Origem origem;
+
+	@Enumerated(EnumType.STRING)
+	private TipoProduto tipoProduto;
+
+	@Column(name = "carga_horaria")
+	private String cargaHoraria;
 	/*
-    @Enumerated(EnumType.STRING)
-    private Origem origem;
-	*/
-	/*
-    @CreationTimestamp
-    @Column(nullable = false, columnDefinition = "datetime",name = "carga_horaria")
-    private OffsetDateTime cargaHoraria;
+	 *
 
-    @ManyToOne
-    @JoinColumn(name = "produto_tipo_produto_id", nullable = false)
-    private TipoProduto tipoProduto;
+	 * @ManyToOne
+	 * 
+	 * @JoinColumn(name = "compra_id", nullable = false) private Compra compra;
+	 * 
+	 * @ManyToOne
+	 * 
+	 * @JoinColumn(name = "orcamento_id", nullable = false) private Orcamento
+	 * orcamento;
+	 */
 
-    @ManyToOne
-    @JoinColumn(name = "compra_id", nullable = false)
-    private Compra compra;
-
-    @ManyToOne
-    @JoinColumn(name = "orcamento_id", nullable = false)
-    private Orcamento orcamento;
-    */
-    
-    // Gets e Sets
-    
+	// Gets e Sets
 
 	public Long getId() {
 		return this.id;
+	}
+
+	public String getCargaHoraria() {
+		return cargaHoraria;
+	}
+
+	public void setCargaHoraria(String cargaHoraria) {
+		this.cargaHoraria = cargaHoraria;
 	}
 
 	public void setId(Long id) {
@@ -148,18 +157,32 @@ public class Produto {
 		this.peso = peso;
 	}
 
-	public Boolean isAtivo() {
+
+	public Origem getOrigem() {
+		return this.origem;
+	}
+
+	public void setOrigem(Origem origem) {
+		this.origem = origem;
+	}
+
+
+	public Ativo getAtivo() {
 		return this.ativo;
 	}
 
-	public Boolean getAtivo() {
-		return this.ativo;
-	}
-
-	public void setAtivo(Boolean ativo) {
+	public void setAtivo(Ativo ativo) {
 		this.ativo = ativo;
 	}
-	
-    
+
+
+
+	public TipoProduto getTipoProduto() {
+		return this.tipoProduto;
+	}
+
+	public void setTipoProduto(TipoProduto tipoProduto) {
+		this.tipoProduto = tipoProduto;
+	}
     
 }

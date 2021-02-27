@@ -1,9 +1,12 @@
 package com.uem.manager.controller;
 
+import java.util.List;
+
 import com.uem.manager.model.Produto;
 import com.uem.manager.service.ProdutoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,8 +21,10 @@ public class ProductController {
 
     // Listagem de produtos
     @GetMapping("/")
-    public String viewProdutoMainPage(Model model) {
-        model.addAttribute("productList", produtoService.getAllProducts());
+    public String viewProdutoMainPage(Model model, @Param("nome") String nome) {
+        List<Produto> listaProdutos = produtoService.getAllProductsByNome(nome);
+        model.addAttribute("productList", listaProdutos);
+        model.addAttribute("nome", nome);
         return "index";
     }
 
@@ -51,4 +56,6 @@ public class ProductController {
         this.produtoService.deleteProductById(id);
         return "redirect:/";
     }
+
+
 }

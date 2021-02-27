@@ -1,6 +1,9 @@
+/home/fernando/at moment/CS/manager/src/main/java/com/uem/manager/model/enums/TipoProduto.java
 /home/fernando/at moment/CS/manager/src/main/java/com/uem/manager/ManagerApplication.java
+/home/fernando/at moment/CS/manager/src/main/java/com/uem/manager/model/enums/Ativo.java
 /home/fernando/at moment/CS/manager/src/main/java/com/uem/manager/service/ProdutoServiceImpl.java
 /home/fernando/at moment/CS/manager/src/main/java/com/uem/manager/repository/ProductRepository.java
+/home/fernando/at moment/CS/manager/src/main/java/com/uem/manager/model/enums/Origem.java
 /home/fernando/at moment/CS/manager/src/main/java/com/uem/manager/controller/ProductController.java
 /home/fernando/at moment/CS/manager/src/main/java/com/uem/manager/model/Produto.java
 /home/fernando/at moment/CS/manager/src/main/java/com/uem/manager/service/ProdutoService.java

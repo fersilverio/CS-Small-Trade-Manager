@@ -43,5 +43,13 @@ public class ProdutoServiceImpl implements ProdutoService {
     public void deleteProductById(long id) {
         this.productRepository.deleteById(id);
     }
+
+    @Override
+    public List<Produto> getAllProductsByNome(String nome) {
+        if (nome != null){
+            return productRepository.getAllByNome(nome);
+        }
+        return productRepository.findAll();
+    }
     
 }

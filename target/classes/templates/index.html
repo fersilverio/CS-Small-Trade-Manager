@@ -2,13 +2,19 @@
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<link href="img/favicon.svg" hreflang="pt-br" rel="icon" type="image/svg+xml"/>
+	<link th:href="@{/img/favicon.svg}" hreflang="pt-br" rel="icon" type="image/svg+xml"/>
 	<link rel="stylesheet" th:href="@{/css/bootstrap.css}">
     
 	<meta charset="utf-8"/>
-	<title>Small Trade Manager &#8211; Consultar Produto</title>
+	<title>Small Trade Manager &#8211; Consultar Produtos</title>
     <script src="js/jquery.js" type="text/javascript"></script>
 	<script src="js/bootstrap.js" type="text/javascript"></script>
+
+	<script type="text/javascript">
+		function clearSearch() {
+			window.location = "[[@{/}]]";
+		}
+	</script>
     
 </head>
 
@@ -69,17 +75,27 @@
 			<h2>Produtos</h2>
 		</div>
 
-		<form accept-charset="utf-8" action="/search_product" autocomplete="on" enctype="application/x-www-form-urlencoded" id="search_product" method="get" name="search_product" rel="noopener" target="_self">
+		<form th:action="@{/}">
 			<div class="form-row justify-content-center">
-				<div class="col-md-4 form-group">
-					<input class="form-control" form="search_product" id="search" name="search" placeholder="Procurar produto" type="search"/>
+				
+				
+				<div class="col-md-6 form-group">
+					<input type="text"  id="nome" name="nome" size="50" th:value="${nome}"   placeholder="Digitar o nome do produto" />
+				
+					<input class="btn btn-secondary btn-sm" type="button" value="Limpar busca" id="btnClear" onclick="clearSearch()" />
+				</div>
+
+				<div class="col-md-1 form-group">
+					<input class="btn btn-dark" type="submit" value="Procurar"/>
+					
+				
 				</div>
 				<div class="col-md-1 form-group">
-					<input class="btn btn-dark" form="search_product" type="submit" value="Procurar">
+					<a class="btn btn-success" th:href="@{/showNewProductForm}">Cadastrar</a>
 				</div>
-				<div class="col-md-1 form-group">
-					<a class="btn btn-primary" th:href="@{/showNewProductForm}">Cadastrar</a>
-				</div>
+
+				
+
 			</div>
 		</form>
 	</div>
@@ -90,10 +106,30 @@
 					<tr>
 		
 						<th scope="row">Nome</th>
-						<th scope="row">Preço Líquido</th>
+						
+						<th scope="row">Líquido(R$)</th>
+						<th scope="row">Bruto(R$)</th>
 						<th scope="row">Unidade</th>
 						<th scope="row">Peso</th>
-						<th scope="row">Quantidade</th>
+						<th scope="row">Qtd</th>
+						<th scope="row">Origem</th>
+						<th scope="row">Estq. Min</th>
+						<th scope="row">Estq. Max</th>
+						<th scope="row">Carga HR (min)</th>
+
+						<th scope="row">Ativo</th>
+						<th scope="row">Compra(ID)</th>
+						<th scope="row">Orçamento(ID)</th>
+						<th scope="row">Tipo</th>
+						<th scope="row">Fornecedor(ID)</th>
+
+
+
+
+
+
+
+
 
 
 	
@@ -105,9 +141,23 @@
 					<tr th:each="produto: ${productList}">
 						<td th:text="${produto.nome}"></td>
 						<td th:text="${produto.precoLiquido}"></td>
+						<td th:text="${produto.precoBruto}"></td>
 						<td th:text="${produto.unidade}"></td>
 						<td th:text="${produto.peso}"></td>
 						<td th:text="${produto.qtd}"></td>
+						<td th:text="${produto.origem}"></td>
+						<td th:text="${produto.estoqueMin}"></td>
+						<td th:text="${produto.estoqueMax}"></td>
+						<td th:text="${produto.cargaHoraria}"></td>
+						<td th:text="${produto.ativo}"></td>
+						<td th:text="${produto.cargaHoraria}"></td>
+						<td th:text="${produto.cargaHoraria}"></td>
+						<td th:text="${produto.tipoProduto}"></td>
+						<td th:text="${produto.cargaHoraria}"></td>
+
+
+
+
 
 
 						<td>
@@ -126,10 +176,6 @@
 	<script src="js/jquery.js" type="text/javascript"></script>
 </body>
 
-<footer class="bg-dark mt-3 py-3 text-white-50">
-    <div class="container text-center">
-        <small>Copyright &copy; 2021. Todos os direitos reservados.</small>
-    </div>
-</footer>
+
 
 </html>
