@@ -2,10 +2,8 @@ package com.uem.simple.manager.model;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.time.OffsetDateTime;
 
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -25,9 +23,7 @@ public class Cliente {
 
     private String cpf;
 
-    @CreationTimestamp
-    @Column(nullable = false, columnDefinition = "datetime")
-    private OffsetDateTime nascimento;
+    private String nascimento;
 
     private String email;
 
