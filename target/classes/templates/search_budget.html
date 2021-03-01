@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<link href="img/favicon.svg" hreflang="pt-br" rel="icon" type="image/svg+xml"/>
+	<link href="css/bootstrap.css" hreflang="en" rel="stylesheet" type="text/css"/>
+	<meta charset="utf-8"/>
+	<meta content="Luiz Joaquim Aderaldo Amichi" name="author"/>
+	<meta content="Gerenciador de clientes, compras, fornecedores, funcionários, produtos em estoque e vendas" name="description"/>
+	<meta content="Cliente, comércio, compra, controle, estoque, fornecedor, funcionário, gerenciador, produto, venda" name="keywords"/>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+	<title>Small Trade Manager &#8211; Consultar Orçamento</title>
+</head>
+
+<body class="bg-light">
+	<header>
+		<nav class="bg-dark navbar navbar-dark navbar-expand-lg">
+			<a class="navbar-brand" href="#">
+				<img alt="Small Trade Manager" class="align-top d-inline-block mx-3" height="30" src="img/favicon.svg" style="filter: invert(1);" width="30"/>
+				Small Trade Manager
+			</a>
+			<button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="ml-auto navbar-nav">
+					<li class="mx-2 nav-item">
+						<a class="nav-link" href="index.html" target="_self">Início</a>
+					</li>
+					<li class="mx-2 nav-item">
+						<a class="nav-link" href="search_client.html" target="_self">Clientes</a>
+					</li>
+					<li class="mx-2 nav-item">
+						<a class="nav-link" href="search_purchase.html" target="_self">Compras</a>
+					</li>
+					<li class="mx-2 nav-item">
+						<a class="nav-link" href="search_provider.html" target="_self">Fornecedores</a>
+					</li>
+					<li class="mx-2 nav-item">
+						<a class="nav-link" href="search_employee.html" target="_self">Funcionários</a>
+					</li>
+					<li class="active mx-2 nav-item">
+						<a class="nav-link" href="search_budget.html" target="_self">Orçamentos</a>
+					</li>
+					<li class="mx-2 nav-item">
+						<a class="nav-link" href="search_product.html" target="_self">Produtos</a>
+					</li>
+					<li class="mx-2 nav-item">
+						<a class="nav-link" href="search_report.html" target="_self">Relatórios</a>
+					</li>
+					<li class="mx-2 nav-item">
+						<a class="nav-link" href="search_service.html" target="_self">Serviços</a>
+					</li>
+					<li class="mx-2 nav-item">
+						<a class="nav-link" href="search_sale.html" target="_self">Vendas</a>
+					</li>
+					<li class="mx-2 nav-item">
+						<a class="nav-link" href="login.html" target="_self">Sair</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+	<div class="container">
+		<div class="my-3 text-center">
+			<img alt="Produto" class="img-fluid mx-3" height="50" src="img/budget.svg" width="50"/>
+			<h2>Orçamentos</h2>
+		</div>
+
+		<form accept-charset="utf-8" action="/search_budget" autocomplete="on" enctype="application/x-www-form-urlencoded" id="search_budget" method="get" name="search_budget" rel="noopener" target="_self">
+			<div class="form-row justify-content-center">
+				<div class="col-md-4 form-group">
+					<input class="form-control" form="search_budget" id="search" name="search" placeholder="Procurar orçamento" type="search"/>
+				</div>
+				<div class="col-md-1 form-group">
+					<input class="btn btn-dark" form="search_budget" type="submit" value="Procurar">
+				</div>
+				<div class="col-md-1 form-group">
+					<a class="btn btn-primary" href="insert_budget.html">Cadastrar</a>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<div class="container-fluid">
+		<table class="table table-hover table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="row">ID</th>
+					<th scope="row">Produtos</th>
+					<th scope="row">Data</th>
+					<th scope="row">Preço</th>
+					<th scope="row">Gerenciar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th scope="row">1</th>
+					<td>1 x Mouse Gamer Razer Viper, 1 x Teclado Mecânico Redragon Rudra</td>
+					<td>26/10/2020</td>
+					<td>R$ 901,65</td>
+					<td><a class="btn btn-success" href="manage_budget.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+				</tr>
+				<tr>
+					<th scope="row">2</th>
+					<td>1 x Headset Gamer HyperX Cloud Revolver, 1 x WebCam Brazil PC V5</td>
+					<td>26/10/2020</td>
+					<td>R$ 1.395,75</td>
+					<td><a class="btn btn-success" href="manage_budget.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+				</tr>
+				<tr>
+					<th scope="row">3</th>
+					<td>2 x Pen Drive Multilaser Twist 2.0 16 GB</td>
+					<td>26/10/2020</td>
+					<td>R$ 65,60</td>
+					<td><a class="btn btn-success" href="manage_budget.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+				</tr>
+				<tr>
+					<th scope="row">4</th>
+					<td>1 x Formatação com Windows 10, 1 x Backup de Restauração</td>
+					<td>26/10/2020</td>
+					<td>R$ 85,00</td>
+					<td><a class="btn btn-success" href="manage_budget.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+				</tr>
+				<tr>
+					<th scope="row">5</th>
+					<td>1 x Teclado Mecânico Redragon Rudra</td>
+					<td>26/10/2020</td>
+					<td>R$ 336,35</td>
+					<td><a class="btn btn-success" href="manage_budget.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+				</tr>
+				<tr>
+					<th scope="row">6</th>
+					<td>1 x Formatação com Windows 10, 1 x Backup de Restauração, 1 x Instalação de Antivírus</td>
+					<td>23/10/2020</td>
+					<td>R$ 120,00</td>
+					<td><a class="btn btn-success" href="manage_budget.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+				</tr>
+				<tr>
+					<th scope="row">7</th>
+					<td>1 x Processador Intel Core i7-9700KF</td>
+					<td>23/10/2020</td>
+					<td>R$ 3.739,75</td>
+					<td><a class="btn btn-success" href="manage_budget.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+				</tr>
+				<tr>
+					<th scope="row">8</th>
+					<td>1 x Cartão de Memória 64 GB SanDisk, 1 x Memória 4 GB DDR3 Notebook Kingston</td>
+					<td>23/10/2020</td>
+					<td>R$ 456,20</td>
+					<td><a class="btn btn-success" href="manage_budget.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+				</tr>
+				<tr>
+					<th scope="row">9</th>
+					<td>1 x HD Seagate 2TB Barracuda, 1 x Placa de Vídeo PCYES GEFORCE G210, ...</td>
+					<td>23/10/2020</td>
+					<td>R$ 9.216,50</td>
+					<td><a class="btn btn-success" href="manage_budget.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+				</tr>
+				<tr>
+					<th scope="row">10</th>
+					<td>1 x Kit Teclado/Mouse Sem Fio Dell KM636</td>
+					<td>22/10/2020</td>
+					<td>R$ 247,60</td>
+					<td><a class="btn btn-success" href="manage_budget.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="9">Exibindo 10 orçamentos dos 200 cadastrados no sistema.</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+
+	<footer class="bg-dark mt-3 py-3 text-white-50">
+		<div class="container text-center">
+			<small>Copyright &copy; 2020. Todos os direitos reservados.</small>
+		</div>
+	</footer>
+
+	<script src="js/jquery.js" type="text/javascript"></script>
+	<script src="js/bootstrap.js" type="text/javascript"></script>
+</body>
+
+</html>
