@@ -57,39 +57,17 @@
             <td th:text="${cliente.telefone}"></td>
             <td th:text="${cliente.celular}"></td>
             <td>
-                <button type="button" class="btn btn-info" data-toggle="modal" th:attr="data-target='#'+ ${cliente.id}">
+                <a class="btn btn-info" th:href="@{'/client/view/' + ${cliente.id}}">
                     <i class="fas fa-eye"></i>
-                </button>
-
-                <div class="modal fade" th:id="${cliente.id}" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                ...
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <a class="btn btn-primary" href="manage_client.html" title="Alterar/Remover">
+                </a>
+                <a class="btn btn-primary" th:href="@{'/client/edit/' + ${cliente.id} }">
                     <i class="fas fa-edit"></i>
                 </a>
-                <a class="btn btn-danger" href="manage_client.html" title="Alterar/Remover">
+                <a class="btn btn-danger" th:href="@{'/client/delete/' + ${cliente.id} }">
                     <i class="fas fa-trash"></i>
                 </a>
             </td>
         </tr>
-
     </table>
 </div>
 </body>

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -40,7 +41,7 @@ public class ClienteController {
     @GetMapping("/new")
     public String addClient(Model m) {
         Cliente cliente = new Cliente();
-        m.addAttribute("clientes", cliente);
+        m.addAttribute("cliente", cliente);
         return "client/new";
     }
 
@@ -56,6 +57,22 @@ public class ClienteController {
         cliente.getEndereco().setCidade(cidade);
         clienteRepository.saveAndFlush(cliente);
         return "redirect:/client";
+    }
+
+    @GetMapping("/view/{id}")
+    public String viewClient(@PathVariable Long id, Model m) {
+        Cliente cliente = clienteService.getClienteById(id);
+        m.addAttribute("cliente", cliente);
+        m.addAttribute("update", false);
+        return "client/manage";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String editClient(@PathVariable Long id, Model m) {
+        Cliente cliente = clienteService.getClienteById(id);
+        m.addAttribute("cliente", cliente);
+        m.addAttribute("update", true);
+        return "client/manage";
     }
 
 }
