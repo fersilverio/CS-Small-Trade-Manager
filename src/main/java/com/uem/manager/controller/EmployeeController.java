@@ -17,7 +17,7 @@ public class EmployeeController {
     @Autowired
     private FuncionarioService funcionarioService;
 
-    
+    //READ funcionario
     @GetMapping("/")
     public String viewFuncionarioMainPage(Model model, @Param("nome") String nome){
         List<Funcionario> listaFuncionarios = funcionarioService.getAllEmployeesByNome(nome);

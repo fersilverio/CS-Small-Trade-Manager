@@ -2,10 +2,14 @@ package com.uem.manager.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.uem.manager.model.enums.TipoEstado;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -48,8 +52,8 @@ public class Funcionario {
     @Column(name = "cidade")
     private String cidade;
 
-    @Column(name = "estado")
-    private String estado;
+    @Enumerated(EnumType.STRING)
+    private TipoEstado tipoEstado;
 
     @Column(name = "contato")
     private String contato;     //celular/telefone
@@ -135,12 +139,12 @@ public class Funcionario {
         this.cidade = cidade;
     }
 
-    public String getEstado() {
-        return this.estado;
+    public TipoEstado getTipoEstado() {
+        return this.tipoEstado;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setEstado(TipoEstado tipoEstado) {
+        this.tipoEstado = tipoEstado;
     }
 
     public String getContato() {
