@@ -105,7 +105,7 @@
 					<th scope="row">Apelido</th>
 					<th scope="row">RG</th>
 					<th scope="row">CPF</th>
-					<th scope="row">Data de Nascimento</th>
+					<th scope="row">Nascimento</th>
 					<th scope="row">Cidade</th>
 					<th scope="row">Estado</th>
 					<th scope="row">Contato</th>
@@ -122,11 +122,11 @@
 					<td th:text="${funcionario.cpf}"></td>
 					<td th:text="${funcionario.dataNascimento}"></td>
 					<td th:text="${funcionario.cidade}"></td>
-					<td th:text="${funcionario.estado}"></td>
+					<td th:text="${funcionario.tipoEstado}"></td>
 					<td th:text="${funcionario.contato}"></td>
 					<td>
-						<a th:href:"@{/showFormForUpdate/{id}(id=${funcionario.id})}" class="btn btn-primary">Atualizar</a>
-						<a th:href:"@{/deleteEmployeeByID/{id}(id=${funcionario.id})}" class="btn btn-danger">Deletar</a> 
+						<a class="btn btn-primary" th:href="@{/showFormForUpdate/{id}(id = ${funcionario.id})}">Atualizar</a>
+						<a class="btn btn-danger" th:href="@{/deleteEmployeeById/{id}(id = ${funcionario.id})}">Deletar</a> 
 					</td>
 				</tr>
 			</tbody>

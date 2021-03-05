@@ -12,7 +12,7 @@
 	<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 	
 	<title>Small Trade Manager &#8211; Consultar Funcionário</title>
-
+	<!--add_employee-->
 </head>
 
 <body class="bg-light">
@@ -76,7 +76,7 @@
 			<div class="form-row">
                 <div class="col-md-6 form-group">
                     <label for="name">Nome</label>
-                    <input type="text" th:field="*{nome}" class="form-control"  placeholder="Joel" />
+                    <input type="text" th:field="*{nome}" name="nome" class="form-control"  placeholder="Joel" />
                 </div>
                 
 				<div class="col-md-6 form-group">
@@ -99,7 +99,8 @@
 			<div class="form-row">
 				<div class="col-md-6 form-group">
 					<label for="rg">RG</label>
-					<input type="text" th:field="*{rg}" class="form-control"  placeholder="somente os numeros" />
+					<input type="text" th:field="*{rg}" class="form-control"  maxlength="12" minlength="12" placeholder="13.340.570-4" />
+					<!--th:pattern="${[0-9]{2}.[0-9]{3}.[0-9]{3}-[0-9]{1}}" da erro nessa formatação-->
 				</div>
 				<div class="col-md-6 form-group">
 					<label for="cpf">CPF</label>
@@ -126,10 +127,9 @@
 				<div class="col-md-6 form-group">
 					<label for="amount">Estado</label>
 					<select class="form-control" th:field="*{tipoEstado}">
-						<option th:each="te : ${com.uem.manager.model.enums.tipoEstado}.values()}">
+						<option th:each="te : ${T(com.uem.manager.model.enums.TipoEstado).values()}"
 							th:value="${te}"
-								th:text="${te.tipo}"
-						</option>
+								th:text="${te.tipo}"></option>
 					</select>
 				</div>
 			</div>
@@ -141,8 +141,8 @@
 				</div>
 			</div>
 
-			<input class="btn btn-primary" form="insert_employee" type="submit" value="Cadastrar">
-			<input class="btn btn-dark" form="insert_employee" type="reset" value="Limpar">
+			<button class="btn btn-primary" type="submit">Cadastrar</button>
+			<button class="btn btn-dark" type="reset">Limpar</button>
 		</form>
 
         <script src="js/jquery.js" type="text/javascript"></script>
