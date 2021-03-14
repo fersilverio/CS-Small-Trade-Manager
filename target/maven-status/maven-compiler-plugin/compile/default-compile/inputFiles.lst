@@ -1,9 +1,12 @@
 /home/wanke/Desktop/CS/CS-Small-Trade-Manager/src/main/java/stManager/model/Endereco.java
 /home/wanke/Desktop/CS/CS-Small-Trade-Manager/src/main/java/stManager/model/Fornecedores.java
 /home/wanke/Desktop/CS/CS-Small-Trade-Manager/src/main/java/stManager/model/enums/Estado.java
+/home/wanke/Desktop/CS/CS-Small-Trade-Manager/src/main/java/stManager/ServletInitializer.java
 /home/wanke/Desktop/CS/CS-Small-Trade-Manager/src/main/java/stManager/service/SupplierService.java
 /home/wanke/Desktop/CS/CS-Small-Trade-Manager/src/main/java/stManager/service/SupplierServiceImpl.java
 /home/wanke/Desktop/CS/CS-Small-Trade-Manager/src/main/java/stManager/repository/SupplierRepository.java
 /home/wanke/Desktop/CS/CS-Small-Trade-Manager/src/main/java/stManager/controller/IndexController.java
+/home/wanke/Desktop/CS/CS-Small-Trade-Manager/src/main/java/stManager/repository/CidadeRepository.java
+/home/wanke/Desktop/CS/CS-Small-Trade-Manager/src/main/java/stManager/controller/SupplierController.java
 /home/wanke/Desktop/CS/CS-Small-Trade-Manager/src/main/java/stManager/StManagerApplication.java
 /home/wanke/Desktop/CS/CS-Small-Trade-Manager/src/main/java/stManager/model/Cidade.java
