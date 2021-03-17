@@ -13,11 +13,6 @@ public class IndexController {
         return "index";
     }
 
-    @GetMapping("/purchase")
-    public String purchase() {
-        return "purchase";
-    }
-
     @GetMapping("/provider")
     public String provider() {
         return "provider";
