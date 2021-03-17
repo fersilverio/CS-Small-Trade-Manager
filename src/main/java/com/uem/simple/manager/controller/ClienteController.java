@@ -75,4 +75,11 @@ public class ClienteController {
         return "client/manage";
     }
 
+    @GetMapping("/delete/{id}")
+    public String deleteClient(@PathVariable Long id) {
+        Cliente cliente = clienteService.getClienteById(id);
+        clienteRepository.delete(cliente);
+        return "redirect:/client";
+    }
+
 }

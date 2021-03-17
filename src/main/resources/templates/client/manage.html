@@ -16,7 +16,7 @@
 </div>
 
 <div class="container" layout:fragment="conteudo-tabela">
-    <form accept-charset="utf-8" th:action="@{/client/update}" th:object="${cliente}" method="post">
+    <form accept-charset="utf-8" th:action="@{/client/add}" th:object="${cliente}" method="post">
         <input type="hidden" th:field="${cliente.id}">
         <div class="form-row">
             <div class="col-md-6 form-group">
@@ -93,6 +93,7 @@
         </div>
         <div th:hidden="!${update}">
             <button class="btn btn-primary" type="submit">Atualizar</button>
+            <a class="btn btn-info" th:href="@{/client}">Voltar</a>
         </div>
     </form>
     <a th:hidden="${update}" class="btn btn-info" th:href="@{/client}">Voltar</a>
