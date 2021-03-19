@@ -67,13 +67,13 @@ public class Fornecedores {
 		this.cnpj = cnpj;
 	}
 
-	// public OffsetDateTime getFundacao() {
-	// 	return this.fundacao;
-	// }
+	public String getFundacao() {
+		return this.fundacao;
+	}
 
-	// public void setFundacao(OffsetDateTime fundacao) {
-	// 	this.fundacao = fundacao;
-	// }
+	public void setFundacao(String fundacao) {
+		this.fundacao = fundacao;
+	}
 
 	public String getEmail() {
 		return email;
@@ -83,13 +83,13 @@ public class Fornecedores {
 		this.email = email;
 	}
 
-	// public Endereco getEndereco() {
-	// 	return endereco;
-	// }
+	public Endereco getEndereco() {
+		return endereco;
+	}
 
-	// public void setEndereco(Endereco endereco) {
-	// 	this.endereco = endereco;
-	// }
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
 
 	public String getTelefone() {
 		return this.telefone;
@@ -108,14 +108,14 @@ public class Fornecedores {
 	}
 
 	// @CreationTimestamp
-    // @Column(nullable = false, columnDefinition = "datetime")
-    // private OffsetDateTime fundacao;
+    // @Column(nullable = false)
+    private String fundacao;
 
 	@Email
     private String email;
 
-    //@Embedded
-    //private Endereco endereco;
+    @Embedded
+    private Endereco endereco;
 
     private String telefone;
 

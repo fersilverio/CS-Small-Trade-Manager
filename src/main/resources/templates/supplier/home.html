@@ -21,39 +21,39 @@
         <thead class="thead-dark">
         <tr class="text-center">
             <th scope="row">ID</th>
-            <th scope="row">Razão Social</th>
+            <!-- <th scope="row">Razão Social</th> -->
             <th scope="row">Nome Fantasia</th>
-            <th scope="row">Inscrição Estadual</th>
+            <!-- <th scope="row">Inscrição Estadual</th> -->
             <th scope="row">CNPJ</th>
-            <!-- <th scope="row">Cidade</th>
-            <th scope="row">Estado</th> -->
+            <th scope="row">Cidade</th>
+            <th scope="row">Estado</th>
             <th scope="row">Telefone</th>
-            <th scope="row">Celular</th>
-            <!-- <th scope="row">Data de Fundação</th> -->
+            <!-- <th scope="row">Celular</th> -->
+            <th scope="row">Data de Fundação</th>
             <th scope="row">Gerenciar</th>
         </tr>
         </thead>
         <tbody class="text-center">
         <tr th:each="supplier : ${Listafornecedores}">
             <th scope="row" th:text="${supplier.id}"></th>
-            <td th:text="${supplier.razaoSocial}"></td>
+            <!-- <td th:text="${supplier.razaoSocial}"></td> -->
             <td th:text="${supplier.nomeFantasia}"></td>
-            <td th:text="${supplier.inscricaoEstadual}"></td>
+            <!-- <td th:text="${supplier.inscricaoEstadual}"></td> -->
             <td th:text="${supplier.cnpj}"></td>
-            <!-- <td th:text="${supplier.endereco.cidade}"></td>
-            <td th:text="${supplier.endereco.cidade.estado}"></td> -->
+            <td th:text="${supplier.endereco.cidade.nome}"></td>
+            <td th:text="${supplier.endereco.cidade.estado}"></td>
             <td th:text="${supplier.telefone}"></td>
-            <td th:text="${supplier.celular}"></td>
-            <!-- <td th:text="${supplier.Fundacao}"></td> -->
+            <!-- <td th:text="${supplier.celular}"></td> -->
+            <td th:text="${supplier.fundacao}"></td>
             <td>
-                <!-- <a class="btn btn-info" th:href="@{'/supplier/view/' + ${fornecedores.id}}">
+                <a class="btn btn-info" th:href="@{'/supplier/view/' + ${supplier.id}}">
                     <i class="fas fa-eye"></i>
                 </a>
-                <a class="btn btn-primary" th:href="@{'/supplier/edit/' + ${fornecedores.id} }">
+                <a class="btn btn-primary" th:href="@{'/supplier/edit/' + ${supplier.id} }">
                     <i class="fas fa-edit"></i>
-                </a> -->
+                </a>
                 <a class="btn btn-danger" th:href="@{'/supplier/delete/' + ${supplier.id} }">
-                    <i class="fas fa-eye"></i>
+                    <i class="fas fa-trash"></i>
                 </a>
             </td>
         </tr>

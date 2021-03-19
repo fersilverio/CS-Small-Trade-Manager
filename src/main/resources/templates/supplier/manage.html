@@ -5,15 +5,13 @@
       layout:decorate="~{layout/model}">
 
 <head>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
-    <title>Small Trade Manager - Cadastro para Fornecedores</title>
+    <title th:text="${update == true ? 'Small Trade Manager - Atualizar Fornecedor' : 'Small Trade Manager - Visualizar Fornecedor'}"></title>
 </head>
 <body>
 <div class="container" layout:fragment="conteudo">
     <div class="my-3 text-center">
         <img alt="Fornecedor" class="img-fluid mx-3" height="50" th:src="@{/img/provider.svg}" width="50"/>
-        <h2>Cadastrar Fornecedor</h2>
+        <h2 th:text="${update == true ? 'Atualizar Fornecedor' : 'Visualizar Fornecedor'}"></h2>
     </div>
 </div>
 
@@ -22,61 +20,61 @@
         <div class="form-row">
             <div class="col-md-6 form-group">
                 <label>Razão Social</label>
-                <input type="text" th:field="*{razaoSocial}" name = "razaoSocial" class="form-control" placeholder="Luiz Joaquim">
+                <input type="text" th:field="*{razaoSocial}" name = "razaoSocial" class="form-control" placeholder="Luiz Joaquim" th:readonly="!${update}">
             </div>
             <div class="col-md-6 form-group">
                 <label>Nome Fantasia</label>
-                <input type="text" th:field="*{nomeFantasia}" class="form-control" placeholder="Aderaldo Amichi">
+                <input type="text" th:field="*{nomeFantasia}" class="form-control" placeholder="Aderaldo Amichi" th:readonly="!${update}">
             </div>
         </div>
         <div class="form-row">
             <div class="col-md-6 form-group">
                 <label>Inscrição Estadual</label>
-                <input type="text" th:field="*{inscricaoEstadual}" class="form-control" placeholder="13.340.570-4">
+                <input type="text" th:field="*{inscricaoEstadual}" class="form-control" placeholder="13.340.570-4" th:readonly="!${update}">
             </div>
             <div class="col-md-6 form-group">
                 <label>CNPJ</label>
-                <input type="text" th:field="*{cnpj}" class="form-control" placeholder="074.584.539-82">
+                <input type="text" th:field="*{cnpj}" class="form-control" placeholder="074.584.539-82" th:readonly="!${update}">
             </div>
         </div>
         <div class="form-row">
             <div class="col-md-6 form-group">
                 <label>Data de Fundação</label>
-                <input type="text" th:field="*{fundacao}" class="form-control" placeholder="dd/mm/yyyy">
+                <input type="text" th:field="*{fundacao}" class="form-control" placeholder="dd/mm/yyyy" th:readonly="!${update}">
             </div>
             <div class="col-md-6 form-group">
                 <label>E-mail</label>
-                <input type="email" th:field="*{email}" class="form-control" placeholder="luizamichi@gmail.com">
+                <input type="email" th:field="*{email}" class="form-control" placeholder="luizamichi@gmail.com" th:readonly="!${update}">
             </div>
         </div>
         <div class="form-row">
             <div class="col-md-6 form-group">
                 <label>Endereço</label>
-                <input type="text" th:field="*{endereco.logradouro}" class="form-control" placeholder="Rua Mandaguari, 32">
+                <input type="text" th:field="*{endereco.logradouro}" class="form-control" placeholder="Rua Mandaguari, 32" th:readonly="!${update}">
             </div>
             <div class="col-md-6 form-group">
                 <label>Complemento</label>
-                <input type="text" th:field="*{endereco.complemento}" class="form-control" placeholder="Apartamento 102">
+                <input type="text" th:field="*{endereco.complemento}" class="form-control" placeholder="Apartamento 102" th:readonly="!${update}">
             </div>
         </div>
         <div class="form-row">
             <div class="col-md-6 form-group">
                 <label>CEP</label>
-                <input type="text" th:field="*{endereco.cep}" class="form-control" placeholder="87020-230">
+                <input type="text" th:field="*{endereco.cep}" class="form-control" placeholder="87020-230" th:readonly="!${update}">
             </div>
             <div class="col-md-6 form-group">
                 <label>Bairro</label>
-                <input type="text" th:field="*{endereco.bairro}" class="form-control" placeholder="Zona 07">
+                <input type="text" th:field="*{endereco.bairro}" class="form-control" placeholder="Zona 07" th:readonly="!${update}">
             </div>
         </div>
         <div class="form-row">
             <div class="col-md-6 form-group">
                 <label>Cidade</label>
-                <input type="text" th:field="*{endereco.cidade.nome}" class="form-control" placeholder="Maringá">
+                <input type="text" th:field="*{endereco.cidade.nome}" class="form-control" placeholder="Maringá" th:readonly="!${update}">
             </div>
             <div class="col-md-6 form-group">
                 <label>Estado</label>
-                <select class="form-control" th:field="*{endereco.cidade.estado}">
+                <select class="form-control" th:field="*{endereco.cidade.estado}" th:disabled="!${update}">
                     <option th:each="sigla : ${T(stManager.model.enums.Estado).values()}"
                             th:value="${sigla}" th:text="${sigla.estado}"></option>
                 </select>
@@ -85,16 +83,19 @@
         <div class="form-row">
             <div class="col-md-6 form-group">
                 <label>Telefone</label>
-                <input type="tel" th:field="*{telefone}" class="form-control" placeholder="(43) 3661-2014">
+                <input type="tel" th:field="*{telefone}" class="form-control" placeholder="(43) 3661-2014" th:readonly="!${update}">
             </div>
             <div class="col-md-6 form-group">
                 <label>Celular</label>
-                <input type="tel" th:field="*{celular}" class="form-control" placeholder="(44) 99866-5521">
+                <input type="tel" th:field="*{celular}" class="form-control" placeholder="(44) 99866-5521" th:readonly="!${update}">
             </div>
         </div>
-        <button class="btn btn-primary" type="submit">Cadastrar</button>
-        <button class="btn btn-dark" type="reset">Limpar</button>
+        <div th:hidden="!${update}">
+            <button class="btn btn-primary" type="submit">Atualizar</button>
+            <a class="btn btn-info" th:href="@{/supplier}">Voltar</a>
+        </div>
     </form>
+    <a th:hidden="${update}" class="btn btn-info" th:href="@{/supplier}">Voltar</a>
 </div>
 </body>
 </html>

@@ -3,7 +3,7 @@ package stManager.model.enums;
 public enum Estado {
 
     AC("Acre"),
-    AL("Alagos"),
+    AL("Alagoa"),
     AP("Amapá"),
     AM("Amazonas"),
     BA("Bahia"),

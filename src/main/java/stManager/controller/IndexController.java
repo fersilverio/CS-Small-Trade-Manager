@@ -18,11 +18,6 @@ public class IndexController {
         return "purchase";
     }
 
-    @GetMapping("/provider")
-    public String provider() {
-        return "provider";
-    }
-
     @GetMapping("/employee")
     public String employee() {
         return "employee";

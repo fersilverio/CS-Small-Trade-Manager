@@ -52,30 +52,30 @@ public class SupplierController {
         if (br.hasErrors()){
             return "supplier/new";
         }
-        // Cidade cidade = new Cidade();
-        // cidade.setEstado(supplier.getEndereco().getCidade().getEstado());
-        // cidade.setNome(supplier.getEndereco().getCidade().getNome());
-        // cidadeRepository.saveAndFlush(cidade);
-        // supplier.getEndereco().setCidade(cidade);
+        Cidade cidade = new Cidade();
+        cidade.setEstado(supplier.getEndereco().getCidade().getEstado());
+        cidade.setNome(supplier.getEndereco().getCidade().getNome());
+        cidadeRepository.saveAndFlush(cidade);
+        supplier.getEndereco().setCidade(cidade);
         supplierRepository.saveAndFlush(supplier);
         return "redirect:/supplier";
     }
 
-    // @GetMapping("/view/{id}")
-    // public String viewSupplier(@PathVariable Long id, Model m) {
-    //     Fornecedores supplier = supplierService.getSupplierById(id);
-    //     m.addAttribute("fornecedores", supplier);
-    //     m.addAttribute("update", false);
-    //     return "supplier/manage";
-    // }
+    @GetMapping("/view/{id}")
+    public String viewSupplier(@PathVariable Long id, Model m) {
+        Fornecedores supplier = supplierService.getSupplierById(id);
+        m.addAttribute("fornecedores", supplier);
+        m.addAttribute("update", false);
+        return "supplier/manage";
+    }
 
-    // @GetMapping("/edit/{id}")
-    // public String editSupplier(@PathVariable Long id, Model m) {
-    //     Fornecedores supplier = supplierService.getSupplierById(id);
-    //     m.addAttribute("fornecedores", supplier);
-    //     m.addAttribute("update", true);
-    //     return "supplier/manage";
-    //}
+    @GetMapping("/edit/{id}")
+    public String editSupplier(@PathVariable Long id, Model m) {
+        Fornecedores supplier = supplierService.getSupplierById(id);
+        m.addAttribute("fornecedores", supplier);
+        m.addAttribute("update", true);
+        return "supplier/manage";
+    }
 
     @GetMapping("/delete/{id}")
     public String deleteSupplier(@PathVariable Long id) {
