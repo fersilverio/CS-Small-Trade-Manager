@@ -3,17 +3,16 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:th="http://www.thymeleaf.org"
       layout:decorate="~{layout/model}">
-<head>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
-    <title>Lista de fornecedores</title>
-</head>
 
+<head>
+    <title>Small Trade Manager - Consultar Fornecedores</title>
+</head>
 <body>
-    
 <div class="container" layout:fragment="conteudo">
     <div class="my-3 text-center">
         <img alt="Fornecedor" class="img-fluid mx-3" height="50" th:src="@{/img/provider.svg}" width="50"/>
-        <h2>Fornecedores</h2> <a class="btn btn-primary" th:href="@{/supplier/new}"><i class="fas fa-plus"></i> Cadastro</a>
+        <h2>Fornecedores</h2> 
+        <a class="btn btn-primary" th:href="@{/supplier/new}"><i class="fas fa-plus"></i> Cadastro</a>
     </div>
 </div>
 
@@ -22,37 +21,39 @@
         <thead class="thead-dark">
         <tr class="text-center">
             <th scope="row">ID</th>
-            <th scope="row">Razao Social</th>
+            <th scope="row">Razão Social</th>
             <th scope="row">Nome Fantasia</th>
-            <th scope="row">Inscricao Estadual</th>
+            <th scope="row">Inscrição Estadual</th>
             <th scope="row">CNPJ</th>
-            <!-- <th scope="row">Endereco</th> -->
-            <th scope="row">E-mail contato</th>
-            <th scope="row">Telefone comercial</th>
-            <th scope="row">Celular privado</th>
+            <!-- <th scope="row">Cidade</th>
+            <th scope="row">Estado</th> -->
+            <th scope="row">Telefone</th>
+            <th scope="row">Celular</th>
+            <!-- <th scope="row">Data de Fundação</th> -->
             <th scope="row">Gerenciar</th>
         </tr>
         </thead>
         <tbody class="text-center">
-        <tr th:each="supplier : ${fornecedores}">
+        <tr th:each="supplier : ${Listafornecedores}">
             <th scope="row" th:text="${supplier.id}"></th>
-            <td th:text="${supplier.razaosocial}"></td>
-            <td th:text="${supplier.nomefantasia}"></td>
-            <td th:text="${supplier.inscricaoestadual}"></td>
+            <td th:text="${supplier.razaoSocial}"></td>
+            <td th:text="${supplier.nomeFantasia}"></td>
+            <td th:text="${supplier.inscricaoEstadual}"></td>
             <td th:text="${supplier.cnpj}"></td>
-            <!-- <td th:text="${supplier.endereco.cidade.estado}"></td> -->
-            <td th:text="${supplier.email}"></td>
+            <!-- <td th:text="${supplier.endereco.cidade}"></td>
+            <td th:text="${supplier.endereco.cidade.estado}"></td> -->
             <td th:text="${supplier.telefone}"></td>
             <td th:text="${supplier.celular}"></td>
+            <!-- <td th:text="${supplier.Fundacao}"></td> -->
             <td>
-                <a class="btn btn-info" th:href="@{'/supplier/view/' + ${supplier.id}}">
+                <!-- <a class="btn btn-info" th:href="@{'/supplier/view/' + ${fornecedores.id}}">
                     <i class="fas fa-eye"></i>
                 </a>
-                <a class="btn btn-primary" th:href="@{'/supplier/edit/' + ${supplier.id} }">
+                <a class="btn btn-primary" th:href="@{'/supplier/edit/' + ${fornecedores.id} }">
                     <i class="fas fa-edit"></i>
-                </a>
+                </a> -->
                 <a class="btn btn-danger" th:href="@{'/supplier/delete/' + ${supplier.id} }">
-                    <i class="fas fa-trash"></i>
+                    <i class="fas fa-eye"></i>
                 </a>
             </td>
         </tr>

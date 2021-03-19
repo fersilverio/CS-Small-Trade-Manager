@@ -33,7 +33,7 @@ public enum Estado {
     private String estado;
 
     public String getEstado() {
-        return estado;
+        return this.estado;
     }
 
     Estado(String estado) {

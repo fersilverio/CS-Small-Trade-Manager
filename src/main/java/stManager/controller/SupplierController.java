@@ -35,15 +35,15 @@ public class SupplierController {
     }
 
     @GetMapping
-    public String viewSupMP(Model m) {
-        m.addAttribute("supplier", supplierService.getAllSuppliers());
+    public String supplier(Model m) {
+        m.addAttribute("Listafornecedores", supplierService.findAll());
         return "supplier/home";
     }
 
     @GetMapping("/new")
     public String addSupplier(Model m) {
         Fornecedores supplier = new Fornecedores();
-        m.addAttribute("supplier", supplier);
+        m.addAttribute("fornecedores", supplier);
         return "supplier/new";
     }
 
@@ -61,20 +61,27 @@ public class SupplierController {
         return "redirect:/supplier";
     }
 
-//     @GetMapping("/view/{id}")
-//     public String viewClient(@PathVariable Long id, Model m) {
-//         Cliente cliente = clienteService.getClienteById(id);
-//         m.addAttribute("cliente", cliente);
-//         m.addAttribute("update", false);
-//         return "client/manage";
-//     }
+    // @GetMapping("/view/{id}")
+    // public String viewSupplier(@PathVariable Long id, Model m) {
+    //     Fornecedores supplier = supplierService.getSupplierById(id);
+    //     m.addAttribute("fornecedores", supplier);
+    //     m.addAttribute("update", false);
+    //     return "supplier/manage";
+    // }
 
-//     @GetMapping("/edit/{id}")
-//     public String editClient(@PathVariable Long id, Model m) {
-//         Cliente cliente = clienteService.getClienteById(id);
-//         m.addAttribute("cliente", cliente);
-//         m.addAttribute("update", true);
-//         return "client/manage";
-//     }
+    // @GetMapping("/edit/{id}")
+    // public String editSupplier(@PathVariable Long id, Model m) {
+    //     Fornecedores supplier = supplierService.getSupplierById(id);
+    //     m.addAttribute("fornecedores", supplier);
+    //     m.addAttribute("update", true);
+    //     return "supplier/manage";
+    //}
+
+    @GetMapping("/delete/{id}")
+    public String deleteSupplier(@PathVariable Long id) {
+        Fornecedores supplier = supplierService.getSupplierById(id);
+        supplierRepository.delete(supplier);
+        return "redirect:/supplier";
+    }
 
 }

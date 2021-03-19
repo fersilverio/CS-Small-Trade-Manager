@@ -5,6 +5,8 @@ import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+
 import java.time.OffsetDateTime;
 
 @Data
@@ -65,13 +67,13 @@ public class Fornecedores {
 		this.cnpj = cnpj;
 	}
 
-	public OffsetDateTime getFundacao() {
-		return fundacao;
-	}
+	// public OffsetDateTime getFundacao() {
+	// 	return this.fundacao;
+	// }
 
-	public void setFundacao(OffsetDateTime fundacao) {
-		this.fundacao = fundacao;
-	}
+	// public void setFundacao(OffsetDateTime fundacao) {
+	// 	this.fundacao = fundacao;
+	// }
 
 	public String getEmail() {
 		return email;
@@ -81,16 +83,16 @@ public class Fornecedores {
 		this.email = email;
 	}
 
-	public Endereco getEndereco() {
-		return endereco;
-	}
+	// public Endereco getEndereco() {
+	// 	return endereco;
+	// }
 
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
+	// public void setEndereco(Endereco endereco) {
+	// 	this.endereco = endereco;
+	// }
 
 	public String getTelefone() {
-		return telefone;
+		return this.telefone;
 	}
 
 	public void setTelefone(String telefone) {
@@ -105,14 +107,15 @@ public class Fornecedores {
 		this.celular = celular;
 	}
 
-	@CreationTimestamp
-    @Column(nullable = false, columnDefinition = "datetime")
-    private OffsetDateTime fundacao;
+	// @CreationTimestamp
+    // @Column(nullable = false, columnDefinition = "datetime")
+    // private OffsetDateTime fundacao;
 
+	@Email
     private String email;
 
-    @Embedded
-    private Endereco endereco;
+    //@Embedded
+    //private Endereco endereco;
 
     private String telefone;
 
