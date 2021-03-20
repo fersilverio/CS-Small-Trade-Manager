@@ -2,21 +2,28 @@
 <html lang="pt-br">
 
 <head>
-	<link href="img/favicon.svg" hreflang="pt-br" rel="icon" type="image/svg+xml"/>
-	<link href="css/bootstrap.css" hreflang="en" rel="stylesheet" type="text/css"/>
+	<link th:href="@{/img/favicon.svg}" hreflang="pt-br" rel="icon" type="image/svg+xml"/>
+	<link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+
 	<meta charset="utf-8"/>
 	<meta content="Luiz Joaquim Aderaldo Amichi" name="author"/>
 	<meta content="Gerenciador de clientes, compras, fornecedores, funcionários, produtos em estoque e vendas" name="description"/>
 	<meta content="Cliente, comércio, compra, controle, estoque, fornecedor, funcionário, gerenciador, produto, venda" name="keywords"/>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 	<title>Small Trade Manager &#8211; Consultar Orçamento</title>
+
+	<script type="text/javascript">
+		function clearSearch() {
+			window.location = "[[@{/}]]";
+		}
+	</script>
 </head>
 
 <body class="bg-light">
 	<header>
 		<nav class="bg-dark navbar navbar-dark navbar-expand-lg">
 			<a class="navbar-brand" href="#">
-				<img alt="Small Trade Manager" class="align-top d-inline-block mx-3" height="30" src="img/favicon.svg" style="filter: invert(1);" width="30"/>
+				<img alt="Small Trade Manager" class="align-top d-inline-block mx-3" height="30" th:src="img/favicon.svg" style="filter: invert(1);" width="30"/>
 				Small Trade Manager
 			</a>
 			<button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
@@ -65,20 +72,23 @@
 
 	<div class="container">
 		<div class="my-3 text-center">
-			<img alt="Produto" class="img-fluid mx-3" height="50" src="img/budget.svg" width="50"/>
+			<img alt="Orcamento" class="img-fluid mx-3" height="50" th:src="@{/img/budget.svg}" width="50"/>
 			<h2>Orçamentos</h2>
 		</div>
 
-		<form accept-charset="utf-8" action="/search_budget" autocomplete="on" enctype="application/x-www-form-urlencoded" id="search_budget" method="get" name="search_budget" rel="noopener" target="_self">
+		<form th:action="@{/}">
 			<div class="form-row justify-content-center">
-				<div class="col-md-4 form-group">
-					<input class="form-control" form="search_budget" id="search" name="search" placeholder="Procurar orçamento" type="search"/>
+				<div class="col-md-6 form-group">
+					<input type="text"  id="data" name="data" size="50" th:value="${data}"   placeholder="Digitar a data do orçamento" />
+					<input class="btn btn-secondary btn-sm" type="button" value="Limpar busca" id="btnClear" onclick="clearSearch()" />
 				</div>
+
 				<div class="col-md-1 form-group">
-					<input class="btn btn-dark" form="search_budget" type="submit" value="Procurar">
+					<input class="btn btn-dark" type="submit" value="Procurar"/>
 				</div>
+
 				<div class="col-md-1 form-group">
-					<a class="btn btn-primary" href="insert_budget.html">Cadastrar</a>
+					<a class="btn btn-success" th:href="@{/showNewBudgetForm}">Cadastrar</a>
 				</div>
 			</div>
 		</form>
@@ -88,7 +98,6 @@
 		<table class="table table-hover table-striped">
 			<thead class="thead-dark">
 				<tr>
-					<th scope="row">ID</th>
 					<th scope="row">Produtos</th>
 					<th scope="row">Data</th>
 					<th scope="row">Preço</th>
