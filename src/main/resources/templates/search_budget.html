@@ -79,7 +79,7 @@
 		<form th:action="@{/}">
 			<div class="form-row justify-content-center">
 				<div class="col-md-6 form-group">
-					<input type="text"  id="data" name="data" size="50" th:value="${data}"   placeholder="Digitar a data do orçamento" />
+					<input type="text"  id="nome" name="nome" size="50" th:value="${nome}"   placeholder="Digitar o nome do orçamento" />
 					<input class="btn btn-secondary btn-sm" type="button" value="Limpar busca" id="btnClear" onclick="clearSearch()" />
 				</div>
 
@@ -105,93 +105,32 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
+				<!--
+					<tr>
 					<th scope="row">1</th>
 					<td>1 x Mouse Gamer Razer Viper, 1 x Teclado Mecânico Redragon Rudra</td>
 					<td>26/10/2020</td>
 					<td>R$ 901,65</td>
 					<td><a class="btn btn-success" href="manage_budget.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
 				</tr>
-				<tr>
-					<th scope="row">2</th>
-					<td>1 x Headset Gamer HyperX Cloud Revolver, 1 x WebCam Brazil PC V5</td>
-					<td>26/10/2020</td>
-					<td>R$ 1.395,75</td>
-					<td><a class="btn btn-success" href="manage_budget.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+				-->
+				
+				<tr th:each="orcamento: ${orcamentoList}">
+					<td th:text="${orcamento.produtos}"></td> <!-- lista de produtos -->
+					<td th:text="${orcamento.data}"></td>
+					<td th:text="${orcamento.preco}"></td>
+					<td>
+						<a class="btn btn-primary" th:href="@{/showFormForUpdate/{id}(id = ${orcamento.id})}">Atualizar</a>
+						<a class="btn btn-danger" th:href="@{/deleteBudgetById/{id}(id = ${orcamento.id})}">Deletar</a> 
+					</td>
 				</tr>
-				<tr>
-					<th scope="row">3</th>
-					<td>2 x Pen Drive Multilaser Twist 2.0 16 GB</td>
-					<td>26/10/2020</td>
-					<td>R$ 65,60</td>
-					<td><a class="btn btn-success" href="manage_budget.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
-				</tr>
-				<tr>
-					<th scope="row">4</th>
-					<td>1 x Formatação com Windows 10, 1 x Backup de Restauração</td>
-					<td>26/10/2020</td>
-					<td>R$ 85,00</td>
-					<td><a class="btn btn-success" href="manage_budget.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
-				</tr>
-				<tr>
-					<th scope="row">5</th>
-					<td>1 x Teclado Mecânico Redragon Rudra</td>
-					<td>26/10/2020</td>
-					<td>R$ 336,35</td>
-					<td><a class="btn btn-success" href="manage_budget.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
-				</tr>
-				<tr>
-					<th scope="row">6</th>
-					<td>1 x Formatação com Windows 10, 1 x Backup de Restauração, 1 x Instalação de Antivírus</td>
-					<td>23/10/2020</td>
-					<td>R$ 120,00</td>
-					<td><a class="btn btn-success" href="manage_budget.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
-				</tr>
-				<tr>
-					<th scope="row">7</th>
-					<td>1 x Processador Intel Core i7-9700KF</td>
-					<td>23/10/2020</td>
-					<td>R$ 3.739,75</td>
-					<td><a class="btn btn-success" href="manage_budget.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
-				</tr>
-				<tr>
-					<th scope="row">8</th>
-					<td>1 x Cartão de Memória 64 GB SanDisk, 1 x Memória 4 GB DDR3 Notebook Kingston</td>
-					<td>23/10/2020</td>
-					<td>R$ 456,20</td>
-					<td><a class="btn btn-success" href="manage_budget.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
-				</tr>
-				<tr>
-					<th scope="row">9</th>
-					<td>1 x HD Seagate 2TB Barracuda, 1 x Placa de Vídeo PCYES GEFORCE G210, ...</td>
-					<td>23/10/2020</td>
-					<td>R$ 9.216,50</td>
-					<td><a class="btn btn-success" href="manage_budget.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
-				</tr>
-				<tr>
-					<th scope="row">10</th>
-					<td>1 x Kit Teclado/Mouse Sem Fio Dell KM636</td>
-					<td>22/10/2020</td>
-					<td>R$ 247,60</td>
-					<td><a class="btn btn-success" href="manage_budget.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
-				</tr>
+				
 			</tbody>
-			<tfoot>
-				<tr>
-					<td colspan="9">Exibindo 10 orçamentos dos 200 cadastrados no sistema.</td>
-				</tr>
-			</tfoot>
 		</table>
 	</div>
 
-	<footer class="bg-dark mt-3 py-3 text-white-50">
-		<div class="container text-center">
-			<small>Copyright &copy; 2020. Todos os direitos reservados.</small>
-		</div>
-	</footer>
-
 	<script src="js/jquery.js" type="text/javascript"></script>
-	<script src="js/bootstrap.js" type="text/javascript"></script>
+	
 </body>
 
 </html>
