@@ -1,0 +1,108 @@
+body {
+	box-sizing: border-box;
+	font-family: 'Helvetica', 'Arial', 'sans-serif';
+	font-size: 16px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+fieldset {
+	background-color: #eee;
+	border-radius: 5px;
+}
+
+input, label {
+	display: inline;
+}
+
+footer {
+	color: #999;
+	font-size: 14px;
+	padding-top: 5px;
+	text-align: center;
+}
+
+form {
+	margin: auto;
+}
+
+header h1 {
+	display: inline;
+	padding: 0 5px;
+}
+
+header nav {
+	display: inline-block;
+}
+
+input {
+	display: inline-block;
+}
+
+input[type='date'], input[type='email'], input[type='number'], input[type='password'], input[type='tel'], input[type='text'], input[type='time'] {
+	border: 1px solid #000;
+	border-radius: 3px;
+	margin: 5px;
+	padding: 5px;
+	width: 275px;
+}
+
+a.button, input[type='button'], input[type='reset'], input[type='submit'] {
+	background-color: #888;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 14px;
+	margin: 5px;
+	padding: 5px 10px;
+	text-decoration: none;
+}
+
+a.button:hover, input[type='button']:hover, input[type='reset']:hover, input[type='submit']:hover, nav ul li a:hover {
+	background-color: #555;
+}
+
+label {
+	display: inline-block;
+	margin: 0 5px;
+	width: 150px;
+}
+
+legend {
+	background-color: #555;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 18px;
+	margin: 5px;
+	padding: 5px 15px;
+}
+
+nav ul li {
+	display: inline;
+}
+
+nav ul li a {
+	background-color: #888;
+	color: #fff;
+	padding: 5px;
+	text-decoration: none;
+}
+
+nav ul li a.active {
+	background-color: #444;
+}
+
+select {
+	border: 1px solid #000;
+	border-radius: 3px;
+	margin: 0 5px;
+	padding: 5px;
+	width: 285px;
+}
+
+td {
+	padding: 5px 15px;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}

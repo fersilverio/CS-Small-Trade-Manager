@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<body>
+<nav class="bg-dark navbar navbar-dark navbar-expand-lg" th:fragment="navbar">
+    <a class="navbar-brand" th:href="@{/}">
+        <img alt="Small Trade Manager" class="align-top d-inline-block mx-3" height="30" th:src="@{/img/favicon.svg}" style="filter: invert(1);" width="30"/>
+        Small Trade Manager
+    </a>
+    <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="ml-auto navbar-nav">
+            <li class="mx-2 nav-item">
+                <a class="nav-link" th:href="@{/}"><i class="fas fa-home"></i> Início</a>
+            </li>
+            <li class="mx-2 nav-item">
+                <a class="nav-link" th:href="@{/client}"><i class="fas fa-users"></i> Clientes</a>
+            </li>
+            <li class="mx-2 nav-item">
+                <a class="nav-link" th:href="@{/purchase}"><i class="fas fa-shopping-cart"></i> Compras</a>
+            </li>
+            <li class="mx-2 nav-item">
+                <a class="nav-link" th:href="@{/provider}"><i class="fas fa-users"></i> Fornecedores</a>
+            </li>
+            <li class="mx-2 nav-item">
+                <a class="nav-link" th:href="@{/employee}"><i class="fas fa-users"></i> Funcionários</a>
+            </li>
+            <li class="mx-2 nav-item">
+                <a class="nav-link" th:href="@{/budget}"><i class="fas fa-money-bill"></i> Orçamentos</a>
+            </li>
+            <li class="mx-2 nav-item">
+                <a class="nav-link" th:href="@{/product}"><i class="fas fa-tags"></i> Produtos</a>
+            </li>
+            <li class="mx-2 nav-item">
+                <a class="nav-link" th:href="@{/report}"><i class="far fa-file"></i> Relatórios</a>
+            </li>
+            <li class="mx-2 nav-item">
+                <a class="nav-link" th:href="@{/service}"><i class="fas fa-wrench"></i> Serviços</a>
+            </li>
+            <li class="mx-2 nav-item">
+                <a class="nav-link" th:href="@{/sale}"><i class="fas fa-store"></i> Vendas</a>
+            </li>
+            <li class="mx-2 nav-item">
+                <a class="nav-link" href="login.html" target="_self"><i class="fas fa-sign-out"></i> Sair</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+</body>
+</html>

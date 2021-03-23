@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout/model}">
+
+<head>
+    <title>Small Trade Manager - Consultar Compra</title>
+</head>
+<body>
+<div class="container" layout:fragment="conteudo">
+    <div class="my-3 text-center">
+        <img alt="Compra" class="img-fluid mx-3" height="50" src="img/purchase.svg" width="50"/>
+        <h2>Compras</h2>
+    </div>
+
+    <form accept-charset="utf-8" action="/search_purchase" autocomplete="on" enctype="application/x-www-form-urlencoded" id="search_purchase" method="get" name="search_purchase" rel="noopener" target="_self">
+        <div class="form-row justify-content-center">
+            <div class="col-md-4 form-group">
+                <input class="form-control" form="search_purchase" id="search" name="search" placeholder="Procurar compra" type="search"/>
+            </div>
+            <div class="col-md-1 form-group">
+                <input class="btn btn-dark" form="search_purchase" type="submit" value="Procurar">
+            </div>
+            <div class="col-md-1 form-group">
+                <a class="btn btn-primary" href="insert_purchase.html">Cadastrar</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="container-fluid" layout:fragment="conteudo-tabela">
+    <table class="table table-hover table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="row">ID</th>
+            <th scope="row">Fornecedor</th>
+            <th scope="row">Produtos</th>
+            <th scope="row">Forma de Pagamento</th>
+            <th scope="row">Data</th>
+            <th scope="row">Valot total</th>
+            <th scope="row">Gerenciar</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Burger Perk</td>
+            <td>5 x American Food</td>
+            <td>Cartão de débito</td>
+            <td>26/10/2020</td>
+            <td>R$ 100,00</td>
+            <td><a class="btn btn-success" href="manage_purchase.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Casa São Paulo</td>
+            <td>1 x Torneira Gourmet Monocromada, 1 x Caixa Acoplada 6L Deca</td>
+            <td>Dinheiro</td>
+            <td>26/10/2020</td>
+            <td>R$ 370,00</td>
+            <td><a class="btn btn-success" href="manage_purchase.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Cocamar</td>
+            <td>24 x Óleo de Soja</td>
+            <td>Cartão de crédito</td>
+            <td>26/10/2020</td>
+            <td>R$ 33,00</td>
+            <td><a class="btn btn-success" href="manage_purchase.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">4</th>
+            <td>Compubrás</td>
+            <td>1 x Headset Gamer HyperX Cloud Revolver, 10 x Pen Drive Multilaser Twist 2.0 16 GB, 1 x Teclado Mecânico Redragon Rudra</td>
+            <td>Cartão de crédito</td>
+            <td>23/10/2020</td>
+            <td>R$ 750,00</td>
+            <td><a class="btn btn-success" href="manage_purchase.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">5</th>
+            <td>Burger Perk</td>
+            <td>10 x American Food, 5 x Mad Max</td>
+            <td>Dinheiro</td>
+            <td>23/10/2020</td>
+            <td>R$ 310,00</td>
+            <td><a class="btn btn-success" href="manage_purchase.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">6</th>
+            <td>Posto Maranello</td>
+            <td>55 x Etanol, 1 x Gasolina, 1 x Troca de óleo</td>
+            <td>Cartão de débito</td>
+            <td>23/10/2020</td>
+            <td>R$ 349,50</td>
+            <td><a class="btn btn-success" href="manage_purchase.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">7</th>
+            <td>Roberto's Pastel</td>
+            <td>8 x Pastel Pizza, 3 x Pastel Frango, 4 x Pastel Queijo</td>
+            <td>Dinheiro</td>
+            <td>22/10/2020</td>
+            <td>R$ 11,75</td>
+            <td><a class="btn btn-success" href="manage_purchase.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">8</th>
+            <td>Compubrás</td>
+            <td>1 x Teclado Mecânico Redragon Rudra</td>
+            <td>Cartão de crédito</td>
+            <td>22/10/2020</td>
+            <td>R$ 250,00</td>
+            <td><a class="btn btn-success" href="manage_purchase.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">9</th>
+            <td>Syma Solutions</td>
+            <td>4 x Mouse Gamer Razer Viper, 5 x WebCam Brazil PC V5</td>
+            <td>Cartão de débito</td>
+            <td>21/10/2020</td>
+            <td>R$ 2.780,00</td>
+            <td><a class="btn btn-success" href="manage_purchase.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">10</th>
+            <td>Roberto's Pastel</td>
+            <td>12 x Pastel Pizza, 1 x Pastel Frango, 2 x Pastel Queijo</td>
+            <td>Dinheiro</td>
+            <td>21/10/2020</td>
+            <td>R$ 11,75</td>
+            <td><a class="btn btn-success" href="manage_purchase.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="9">Exibindo 10 compras dos 300 cadastradas no sistema.</td>
+        </tr>
+        </tfoot>
+    </table>
+</div>
+</body>
+</html>
