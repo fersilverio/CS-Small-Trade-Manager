@@ -18,7 +18,7 @@
 </div>
 
 <div class="container" layout:fragment="conteudo-tabela">
-    <form accept-charset="utf-8" th:action="@{/supplier/add}" th:object="${fornecedores}" method="post">
+    <form accept-charset="utf-8" th:action="@{/supplier/add}" th:object="${fornecedor}" method="post">
         <div class="form-row">
             <div class="col-md-6 form-group">
                 <label>Razão Social</label>
@@ -77,7 +77,7 @@
             <div class="col-md-6 form-group">
                 <label>Estado</label>
                 <select class="form-control" th:field="*{endereco.cidade.estado}">
-                    <option th:each="sigla : ${T(stManager.model.enums.Estado).values()}"
+                    <option th:each="sigla : ${T(com.uem.simple.manager.model.enums.Estado).values()}"
                             th:value="${sigla}" th:text="${sigla.estado}"></option>
                 </select>
             </div>

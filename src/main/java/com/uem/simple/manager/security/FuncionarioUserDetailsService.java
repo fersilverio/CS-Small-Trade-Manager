@@ -1,7 +1,5 @@
-package stManager.security;
+package com.uem.simple.manager.security;
 
-import stManager.model.Funcionario;
-import stManager.repository.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -15,6 +13,9 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
+
+import com.uem.simple.manager.model.Funcionario;
+import com.uem.simple.manager.repository.FuncionarioRepository;
 
 @Service
 public class FuncionarioUserDetailsService implements UserDetailsService {

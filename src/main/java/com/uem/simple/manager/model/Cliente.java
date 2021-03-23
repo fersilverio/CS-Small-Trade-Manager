@@ -1,17 +1,14 @@
-package stManager.model;
+package com.uem.simple.manager.model;
 
-import stManager.model.enums.Role;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.time.OffsetDateTime;
 
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-public class Funcionario {
+public class Cliente {
 
     @EqualsAndHashCode.Include
     @Id
@@ -22,9 +19,21 @@ public class Funcionario {
 
     private String sobrenome;
 
-    private String apelido;
+    private String rg;
 
-    private String senha;
+    private String cpf;
+
+    private String nascimento;
+
+    private String email;
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return this.nome;
@@ -42,38 +51,6 @@ public class Funcionario {
         this.sobrenome = sobrenome;
     }
 
-    public String getApelido() {
-        return this.apelido;
-    }
-
-    public void setApelido(String apelido) {
-        this.apelido = apelido;
-    }
-
-    public String getSenha() {
-        return this.senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "usuario_role")
-    private Role role;
-
-    public Role getRole() {
-        return this.role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    };
-
-    private String rg;
-
-    private String cpf;
-
     public String getRg() {
         return this.rg;
     }
@@ -90,11 +67,13 @@ public class Funcionario {
         this.cpf = cpf;
     }
 
-    @CreationTimestamp
-    @Column(nullable = false, columnDefinition = "datetime")
-    private OffsetDateTime nascimento;
+    public String getNascimento() {
+        return this.nascimento;
+    }
 
-    private String email;
+    public void setNascimento(String nascimento) {
+        this.nascimento = nascimento;
+    }
 
     public String getEmail() {
         return this.email;
@@ -104,20 +83,19 @@ public class Funcionario {
         this.email = email;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "funcionario_cidade_id")
-    private Cidade cidade;
+    @Embedded
+    private Endereco endereco;
 
     private String telefone;
 
     private String celular;
 
-    public Cidade getCidade() {
-        return this.cidade;
+    public Endereco getEndereco() {
+        return this.endereco;
     }
 
-    public void setCidade(Cidade cidade) {
-        this.cidade = cidade;
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
     public String getTelefone() {
@@ -134,6 +112,6 @@ public class Funcionario {
 
     public void setCelular(String celular) {
         this.celular = celular;
-    }
+    };
 
 }

@@ -1,11 +1,12 @@
-package stManager.model;
+package com.uem.simple.manager.model;
 
-import stManager.model.enums.Estado;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+
+import com.uem.simple.manager.model.enums.Estado;
 
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)

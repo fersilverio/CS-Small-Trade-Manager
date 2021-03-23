@@ -1,4 +1,4 @@
-package stManager.model.enums;
+package com.uem.simple.manager.model.enums;
 
 public enum Estado {
 

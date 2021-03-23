@@ -1,6 +1,7 @@
-package stManager.config;
+package com.uem.simple.manager.config;
 
-import stManager.security.FuncionarioUserDetailsService;
+import com.uem.simple.manager.security.FuncionarioUserDetailsService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;

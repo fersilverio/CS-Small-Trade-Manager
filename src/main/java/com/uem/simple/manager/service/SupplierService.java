@@ -1,12 +1,13 @@
-package stManager.service;
+package com.uem.simple.manager.service;
 
-import stManager.model.Fornecedores;
-import stManager.repository.SupplierRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+
+import com.uem.simple.manager.model.Fornecedor;
+import com.uem.simple.manager.repository.SupplierRepository;
 
 @Service
 public class SupplierService {
@@ -18,13 +19,13 @@ public class SupplierService {
         this.sr = sr;
     }
 
-    public List<Fornecedores> findAll() {
+    public List<Fornecedor> findAll() {
         return sr.findAll();
     }
 
-    public Fornecedores getSupplierById(Long id) {
-        Optional<Fornecedores> supplierOpc = sr.findById(id);
-        Fornecedores supplier = null;
+    public Fornecedor getSupplierById(Long id) {
+        Optional<Fornecedor> supplierOpc = sr.findById(id);
+        Fornecedor supplier = null;
         if (supplierOpc.isPresent()) {
             supplier = supplierOpc.get();
         } else {

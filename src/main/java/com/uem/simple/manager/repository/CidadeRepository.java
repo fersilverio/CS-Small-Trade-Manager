@@ -1,6 +1,7 @@
-package stManager.repository;
+package com.uem.simple.manager.repository;
 
-import stManager.model.Cidade;
+import com.uem.simple.manager.model.Cidade;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CidadeRepository extends JpaRepository<Cidade, Long> {

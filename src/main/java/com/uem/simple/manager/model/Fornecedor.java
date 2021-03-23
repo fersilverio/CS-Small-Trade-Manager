@@ -1,18 +1,18 @@
-package stManager.model;
+package com.uem.simple.manager.model;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.hibernate.annotations.CreationTimestamp;
+// import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 
-import java.time.OffsetDateTime;
+// import java.time.OffsetDateTime;
 
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-public class Fornecedores {
+public class Fornecedor {
 
     @EqualsAndHashCode.Include
     @Id

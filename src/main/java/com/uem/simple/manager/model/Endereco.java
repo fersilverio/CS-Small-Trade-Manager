@@ -1,4 +1,4 @@
-package stManager.model;
+package com.uem.simple.manager.model;
 
 
 import lombok.Data;
