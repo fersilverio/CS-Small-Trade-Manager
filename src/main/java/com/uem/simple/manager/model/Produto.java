@@ -62,18 +62,7 @@ public class Produto {
 
 	@Column(name = "carga_horaria")
 	private String cargaHoraria;
-	/*
-	 *
-
-	 * @ManyToOne
-	 * 
-	 * @JoinColumn(name = "compra_id", nullable = false) private Compra compra;
-	 * 
-	 * @ManyToOne
-	 * 
-	 * @JoinColumn(name = "orcamento_id", nullable = false) private Orcamento
-	 * orcamento;
-	 */
+	
 
 	// Gets e Sets
 
