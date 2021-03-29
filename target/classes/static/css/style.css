@@ -101,7 +101,6 @@ select {
 
 td {
 	padding: 5px 15px;
-	white-space: nowrap;
 }
 
 tr:nth-child(even) {
