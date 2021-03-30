@@ -9,6 +9,8 @@ import com.uem.simple.manager.model.Produto;
 import com.uem.simple.manager.repository.ProductRepository;
 import com.uem.simple.manager.repository.SupplierRepository;
 import com.uem.simple.manager.service.ProductService;
+import com.uem.simple.manager.service.SupplierService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
@@ -27,13 +29,15 @@ public class ProductController {
     private final ProductService productService;
     private final ProductRepository productRepository;
     private final SupplierRepository supplierRepository;
+    private final SupplierService supplierService;
 
     
     @Autowired
-    public ProductController (ProductService productService, SupplierRepository supplierRepository, ProductRepository productRepository){
+    public ProductController (ProductService productService, SupplierRepository supplierRepository, ProductRepository productRepository, SupplierService supplierService){
         this.productService = productService;
         this.productRepository = productRepository;
         this.supplierRepository = supplierRepository;
+        this.supplierService = supplierService;
     }
     
     
@@ -60,6 +64,13 @@ public class ProductController {
         }
         
         // acessar a lista de fornecedores por nome
+        List<Fornecedor> listaFornecedores = supplierService.findAll();
+        // precisaria do parametro vindo do front pra elaborar uma chamada a busca por nome fantasia do wanke
+        // talvez transformar o projeto pra one-to-one entre fornecedores e produtos
+        // product.setFornecedor();
+        // salvar fornecedor;
+        
+
 
         return "";
         
