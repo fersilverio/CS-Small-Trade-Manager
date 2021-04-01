@@ -31,26 +31,25 @@ public class ProductController {
     private final SupplierRepository supplierRepository;
     private final SupplierService supplierService;
 
-    
+
     @Autowired
-    public ProductController (ProductService productService, SupplierRepository supplierRepository, ProductRepository productRepository, SupplierService supplierService){
+    public ProductController(ProductService productService, SupplierRepository supplierRepository, ProductRepository productRepository, SupplierService supplierService) {
         this.productService = productService;
         this.productRepository = productRepository;
         this.supplierRepository = supplierRepository;
         this.supplierService = supplierService;
     }
-    
-    
-    
+
+
     @GetMapping
-    public String product (Model m){
+    public String product(Model m) {
         m.addAttribute("ListaProdutos", productService.findAll());
         return "product/home";
     }
 
 
     @GetMapping("/new")
-    public String addProduct(Model m){
+    public String addProduct(Model m) {
         Produto product = new Produto();
         m.addAttribute("produto", product);
         return "product/new";
@@ -58,29 +57,28 @@ public class ProductController {
 
 
     @PostMapping("/add")
-    public String saveProduct(@Valid Produto product, BindingResult br, RedirectAttributes ra){
-        if (br.hasErrors()){
+    public String saveProduct(@Valid Produto product, BindingResult br, RedirectAttributes ra) {
+        if (br.hasErrors()) {
             return "product/new";
         }
-        
+
         // acessar a lista de fornecedores por nome
         List<Fornecedor> listaFornecedores = supplierService.findAll();
         // precisaria do parametro vindo do front pra elaborar uma chamada a busca por nome fantasia do wanke
         // talvez transformar o projeto pra one-to-one entre fornecedores e produtos
         // product.setFornecedor();
         // salvar fornecedor;
-        
 
 
         return "";
-        
+
 
         //continua
     }
 
 
     @GetMapping("/view/{id}")
-    public String viewProduct(@PathVariable Long id, Model m){
+    public String viewProduct(@PathVariable Long id, Model m) {
         Produto product = productService.getProductById(id);
         m.addAttribute("produto", product);
         m.addAttribute("update", false);
@@ -95,7 +93,6 @@ public class ProductController {
         m.addAttribute("update", true);
         return "supplier/manage";
     }
-
 
 
     @GetMapping("/delete/{id}")

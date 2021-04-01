@@ -48,7 +48,7 @@ public class SupplierController {
 
     @PostMapping("/add")
     public String salvaSupplier(@Valid Fornecedor supplier, BindingResult br, RedirectAttributes ra) {
-        if (br.hasErrors()){
+        if (br.hasErrors()) {
             return "supplier/new";
         }
         Cidade cidade = new Cidade();

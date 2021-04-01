@@ -10,33 +10,27 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-
 @Service
 public class ProductService {
     private final ProductRepository pr;
 
     @Autowired
-    public ProductService(ProductRepository pr){
+    public ProductService(ProductRepository pr) {
         this.pr = pr;
     }
 
-    public List<Produto> findAll(){
+    public List<Produto> findAll() {
         return pr.findAll();
     }
 
-    public Produto getProductById(Long id){
+    public Produto getProductById(Long id) {
         Optional<Produto> productOpc = pr.findById(id);
         Produto produto = null;
-        if (productOpc.isPresent()){
+        if (productOpc.isPresent()) {
             produto = productOpc.get();
-        }
-        else{
+        } else {
             throw new RuntimeException("Product not found for ID: " + id);
         }
         return produto;
     }
-
-
-
-    
 }
