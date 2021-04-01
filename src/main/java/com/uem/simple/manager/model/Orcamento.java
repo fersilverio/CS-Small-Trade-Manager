@@ -1,3 +1,4 @@
+/*
 package com.uem.simple.manager.model;
 
 import lombok.Data;
@@ -31,4 +32,47 @@ public class Orcamento {
 
     private BigDecimal total;
 
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<Produto> getProdutos() {
+        return this.produtos;
+    }
+
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
+    }
+
+    public Integer getQtd() {
+        return this.qtd;
+    }
+
+    public void setQtd(Integer qtd) {
+        this.qtd = qtd;
+    }
+
+    public OffsetDateTime getData() {
+        return this.data;
+    }
+
+    public void setData(OffsetDateTime data) {
+        this.data = data;
+    }
+
+    public BigDecimal getTotal() {
+        return this.total;
+    }
+
+    public void setTotal(BigDecimal total) {
+        this.total = total;
+    }
+
+
 }
+*/

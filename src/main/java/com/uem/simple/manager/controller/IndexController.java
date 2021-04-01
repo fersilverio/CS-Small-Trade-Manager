@@ -13,10 +13,10 @@ public class IndexController {
         return "index";
     }
 
-    @GetMapping("/provider")
-    public String provider() {
-        return "provider";
-    }
+    // @GetMapping("/provider")
+    // public String provider() {
+    //     return "provider";
+    // }
 
     @GetMapping("/employee")
     public String employee() {
@@ -28,10 +28,10 @@ public class IndexController {
         return "budget";
     }
 
-    @GetMapping("/product")
-    public String product() {
-        return "product";
-    }
+    // @GetMapping("/product")
+    // public String product() {
+    //     return "product";
+    // }
 
     @GetMapping("/report")
     public String report() {

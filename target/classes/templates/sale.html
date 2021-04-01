@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout/model}">
+
+<head>
+    <title>Small Trade Manager - Consultar Venda</title>
+</head>
+<body>
+<div class="container" layout:fragment="conteudo">
+    <div class="my-3 text-center">
+        <img alt="Compra" class="img-fluid mx-3" height="50" src="img/sale.svg" width="50"/>
+        <h2>Vendas</h2>
+    </div>
+
+    <form accept-charset="utf-8" action="/search_sale" autocomplete="on" enctype="application/x-www-form-urlencoded" id="search_sale" method="get" name="search_sale" rel="noopener" target="_self">
+        <div class="form-row justify-content-center">
+            <div class="col-md-4 form-group">
+                <input class="form-control" form="search_sale" id="search" name="search" placeholder="Procurar venda" type="search"/>
+            </div>
+            <div class="col-md-1 form-group">
+                <input class="btn btn-dark" form="search_sale" type="submit" value="Procurar">
+            </div>
+            <div class="col-md-1 form-group">
+                <a class="btn btn-primary" href="insert_sale.html">Cadastrar</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="container-fluid" layout:fragment="conteudo-tabela">
+    <table class="table table-hover table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="row">ID</th>
+            <th scope="row">Cliente</th>
+            <th scope="row">Produtos</th>
+            <th scope="row">Forma de Pagamento</th>
+            <th scope="row">Data</th>
+            <th scope="row">Valot total</th>
+            <th scope="row">Gerenciar</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Luiz Joaquim Aderaldo Amichi</td>
+            <td>1 x Mouse Gamer Razer Viper, 1 x Teclado Mecânico Redragon Rudra</td>
+            <td>Cartão de débito</td>
+            <td>26/10/2020</td>
+            <td>R$ 901,65</td>
+            <td><a class="btn btn-success" href="manage_sale.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Geovana Izabela Monte</td>
+            <td>1 x Headset Gamer HyperX Cloud Revolver, 1 x WebCam Brazil PC V5</td>
+            <td>Dinheiro</td>
+            <td>26/10/2020</td>
+            <td>R$ 1.395,75</td>
+            <td><a class="btn btn-success" href="manage_sale.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Mateus Henrique Aderaldo Amichi</td>
+            <td>2 x Pen Drive Multilaser Twist 2.0 16 GB</td>
+            <td>Dinheiro</td>
+            <td>26/10/2020</td>
+            <td>R$ 65,60</td>
+            <td><a class="btn btn-success" href="manage_sale.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">4</th>
+            <td>Fernando Silva Silvério</td>
+            <td>1 x Formatação com Windows 10, 1 x Backup de Restauração</td>
+            <td>Cartão de crédito</td>
+            <td>26/10/2020</td>
+            <td>R$ 85,00</td>
+            <td><a class="btn btn-success" href="manage_sale.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">5</th>
+            <td>Nadir Brasilino Monte</td>
+            <td>1 x Teclado Mecânico Redragon Rudra</td>
+            <td>Cartão de débito</td>
+            <td>26/10/2020</td>
+            <td>R$ 336,35</td>
+            <td><a class="btn btn-success" href="manage_sale.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">6</th>
+            <td>Davi Tavares Santos</td>
+            <td>1 x Formatação com Windows 10, 1 x Backup de Restauração, 1 x Instalação de Antivírus</td>
+            <td>Cartão de crédito</td>
+            <td>23/10/2020</td>
+            <td>R$ 120,00</td>
+            <td><a class="btn btn-success" href="manage_sale.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">7</th>
+            <td>Héctor Dorrighello Giacon</td>
+            <td>1 x Processador Intel Core i7-9700KF</td>
+            <td>Cartão de crédito</td>
+            <td>23/10/2020</td>
+            <td>R$ 3.739,75</td>
+            <td><a class="btn btn-success" href="manage_sale.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">8</th>
+            <td>Luís Cláudio Silva</td>
+            <td>1 x Cartão de Memória 64 GB SanDisk, 1 x Memória 4 GB DDR3 Notebook Kingston</td>
+            <td>Dinheiro</td>
+            <td>23/10/2020</td>
+            <td>R$ 456,20</td>
+            <td><a class="btn btn-success" href="manage_sale.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">9</th>
+            <td>Gustavo Belançon Mendes</td>
+            <td>1 x HD Seagate 2TB Barracuda, 1 x Placa de Vídeo PCYES GEFORCE G210, ...</td>
+            <td>Dinheiro</td>
+            <td>23/10/2020</td>
+            <td>R$ 9.216,50</td>
+            <td><a class="btn btn-success" href="manage_sale.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        <tr>
+            <th scope="row">10</th>
+            <td>Letícia Naomi Takeshiro</td>
+            <td>1 x Kit Teclado/Mouse Sem Fio Dell KM636</td>
+            <td>Cartão de débito</td>
+            <td>22/10/2020</td>
+            <td>R$ 247,60</td>
+            <td><a class="btn btn-success" href="manage_sale.html" title="Alterar/Remover"><img alt="Gerenciar" height="15" src="img/gear.svg" width="15"/></a></td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="9">Exibindo 10 vendas dos 500 cadastradas no sistema.</td>
+        </tr>
+        </tfoot>
+    </table>
+</div>
+</body>
+</html>

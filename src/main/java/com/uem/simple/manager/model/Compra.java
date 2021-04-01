@@ -1,3 +1,4 @@
+/*
 package com.uem.simple.manager.model;
 
 import com.uem.simple.manager.model.enums.FormaPagamento;
@@ -39,4 +40,63 @@ public class Compra {
 
     private BigDecimal total;
 
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Fornecedor getFornecedor() {
+        return this.fornecedor;
+    }
+
+    public void setFornecedor(Fornecedor fornecedor) {
+        this.fornecedor = fornecedor;
+    }
+
+    public OffsetDateTime getData() {
+        return this.data;
+    }
+
+    public void setData(OffsetDateTime data) {
+        this.data = data;
+    }
+
+    public List<Produto> getProdutos() {
+        return this.produtos;
+    }
+
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
+    }
+
+    public Integer getQtd() {
+        return this.qtd;
+    }
+
+    public void setQtd(Integer qtd) {
+        this.qtd = qtd;
+    }
+
+    public FormaPagamento getFormaPagamento() {
+        return this.formaPagamento;
+    }
+
+    public void setFormaPagamento(FormaPagamento formaPagamento) {
+        this.formaPagamento = formaPagamento;
+    }
+
+    public BigDecimal getTotal() {
+        return this.total;
+    }
+
+    public void setTotal(BigDecimal total) {
+        this.total = total;
+    }
+
+
 }
+*/
