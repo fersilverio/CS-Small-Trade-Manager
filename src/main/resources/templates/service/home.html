@@ -8,7 +8,7 @@
 	<title>Small Trade Manager &#8211; Consultar Serviços</title>
 </head>
 
-<body class="bg-light">
+<body>
 	
 
 	<div class="container" layout:fragment="conteudo">
@@ -19,7 +19,7 @@
 		</div>
 	</div>
 
-	<div class="table-responsive" layout:fragment="conteudo-tabela">
+	<div class="container-fluid" layout:fragment="conteudo-tabela">
 		<table class="table table-hover table-striped">
 			<thead class="thead-dark">
 				<tr>
@@ -31,7 +31,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="service: ${listaServicos}">
+				<tr th:each="service: ${ListaServicos}">
 					<td th:text="${service.nome}"></td>
 					<td th:text="${service.tipo}"></td>
 					<td th:text="${service.preco}"></td>

@@ -26,7 +26,7 @@
 			<div class="col-md-6 form-group">
 				<label for="unity">Tipo</label>
 				<select class="form-control"  th:field="*{tipo}">
-					<option th:each="tp : ${T(com.uem.manager.model.enums.TipoServico).values()}"
+					<option th:each="tp : ${T(com.uem.simple.manager.model.enums.TipoServico).values()}"
 					 th:value="${tp}"
 					 th:text="${tp.tipoServico}"></option>
 					

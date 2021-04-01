@@ -38,7 +38,7 @@ public class ServicoController {
     public String addService(Model m) {
         Servico servico = new Servico();
         m.addAttribute("servico", servico);
-        return "supplier/new";
+        return "service/new";
     }
 
     @PostMapping("/add")

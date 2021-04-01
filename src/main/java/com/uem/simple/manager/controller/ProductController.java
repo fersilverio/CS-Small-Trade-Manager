@@ -53,6 +53,7 @@ public class ProductController {
     public String addProduct(Model m){
         Produto product = new Produto();
         m.addAttribute("produto", product);
+        m.addAttribute("listaFornecedores", supplierService.findAll());
         return "product/new";
     }
 
@@ -62,20 +63,8 @@ public class ProductController {
         if (br.hasErrors()){
             return "product/new";
         }
-        
-        // acessar a lista de fornecedores por nome
-        List<Fornecedor> listaFornecedores = supplierService.findAll();
-        // precisaria do parametro vindo do front pra elaborar uma chamada a busca por nome fantasia do wanke
-        // talvez transformar o projeto pra one-to-one entre fornecedores e produtos
-        // product.setFornecedor();
-        // salvar fornecedor;
-        
-
-
-        return "";
-        
-
-        //continua
+        productRepository.save(product);
+        return "redirect:/product";
     }
 
 
@@ -93,7 +82,7 @@ public class ProductController {
         Produto product = productService.getProductById(id);
         m.addAttribute("produto", product);
         m.addAttribute("update", true);
-        return "supplier/manage";
+        return "product/manage";
     }
 
 
