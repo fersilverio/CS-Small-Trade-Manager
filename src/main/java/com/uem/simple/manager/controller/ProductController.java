@@ -1,6 +1,6 @@
 package com.uem.simple.manager.controller;
 
-import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -12,12 +12,10 @@ import com.uem.simple.manager.service.ProductService;
 import com.uem.simple.manager.service.SupplierService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -63,6 +61,9 @@ public class ProductController {
         if (br.hasErrors()){
             return "product/new";
         }
+        Optional<Fornecedor> supplier = supplierRepository.findById(product.fornecedor.getId());
+        Fornecedor sup = supplier.get();
+        product.setFornecedor(sup);
         productRepository.save(product);
         return "redirect:/product";
     }
@@ -73,6 +74,7 @@ public class ProductController {
         Produto product = productService.getProductById(id);
         m.addAttribute("produto", product);
         m.addAttribute("update", false);
+        m.addAttribute("listaFornecedores", supplierService.findAll());
         return "product/manage";
     }
 
@@ -82,6 +84,7 @@ public class ProductController {
         Produto product = productService.getProductById(id);
         m.addAttribute("produto", product);
         m.addAttribute("update", true);
+        m.addAttribute("listaFornecedores", supplierService.findAll());
         return "product/manage";
     }
 

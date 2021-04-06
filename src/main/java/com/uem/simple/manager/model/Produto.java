@@ -27,8 +27,8 @@ public class Produto {
 	private String nome;
 	
 	@ManyToOne(fetch = FetchType.LAZY) 
-	@JoinColumn(name = "fornecedor") 
-	private Fornecedor fornecedor;
+	@JoinColumn(name = "fornecedor")
+    public Fornecedor fornecedor;
 	 
 	@Column(name = "unidade")
 	private String unidade;
@@ -173,5 +173,15 @@ public class Produto {
 	public void setTipoProduto(TipoProduto tipoProduto) {
 		this.tipoProduto = tipoProduto;
 	}
+
+
+	public Fornecedor getFornecedor() {
+		return this.fornecedor;
+	}
+
+	public void setFornecedor(Fornecedor fornecedor) {
+		this.fornecedor = fornecedor;
+	}
+
     
 }
