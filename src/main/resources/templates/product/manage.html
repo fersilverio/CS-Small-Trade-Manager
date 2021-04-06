@@ -5,13 +5,12 @@
       layout:decorate="~{layout/model}">
 
 <head>
-    <title>Small Trade Manager - Cadastro de Produtos</title>
-</head>
+    <title th:text="${update == true ? 'Small Trade Manager - Atualizar Produto' : 'Small Trade Manager - Visualizar Produto'}"></title></head>
 <body>
 <div class="container" layout:fragment="conteudo">
     <div class="my-3 text-center">
         <img alt="Fornecedor" class="img-fluid mx-3" height="50" th:src="@{/img/product.svg}" width="50"/>
-        <h2>Cadastrar Produto</h2>
+        <h2 th:text="${update == true ? 'Atualizar Produto' : 'Visualizar Produto'}"></h2>
     </div>
 </div>
 
@@ -135,10 +134,13 @@
         </div>
 
 
-        <button class="btn btn-primary"  type="submit" >Cadastrar</button>
-        <button class="btn btn-dark"  type="reset">Limpar</button>
+        <div th:hidden="!${update}">
+            <button class="btn btn-primary" type="submit">Atualizar</button>
+            <a class="btn btn-info" th:href="@{/product}">Voltar</a>
+        </div>
         
     </form>
+    <a th:hidden="${update}" class="btn btn-info" th:href="@{/product}">Voltar</a>
 </div>
 </body>
 </html>
