@@ -5,15 +5,12 @@
       layout:decorate="~{layout/model}">
 
 <head>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
-    <title>Small Trade Manager - Cadastro de Produtos</title>
-</head>
+    <title th:text="${update == true ? 'Small Trade Manager - Atualizar Produto' : 'Small Trade Manager - Visualizar Produto'}"></title></head>
 <body>
 <div class="container" layout:fragment="conteudo">
     <div class="my-3 text-center">
         <img alt="Fornecedor" class="img-fluid mx-3" height="50" th:src="@{/img/product.svg}" width="50"/>
-        <h2>Cadastrar Produto</h2>
+        <h2 th:text="${update == true ? 'Atualizar Produto' : 'Visualizar Produto'}"></h2>
     </div>
 </div>
 
@@ -26,6 +23,16 @@
                 <label for="name">Nome</label>
                 <input type="text" th:field="*{nome}" class="form-control"  placeholder="Headset Gamer HyperX Cloud Revolver" />
             </div>
+
+            <div class="col-md-6 form-group">
+                <label for="amount">Fornecedor</label>
+                <select class="form-control"  th:field="*{fornecedor}"/>
+                    <option th:each="sup : ${listaFornecedores}"
+                          th:value="${sup.id}"
+                          th:text="${sup.nomeFantasia}"></option>
+                </select>
+            </div>
+
         </div>
 
         <div class="form-row">
@@ -95,7 +102,7 @@
             <div class="col-md-6 form-group">
                 <label for="amount">Origem</label>
                 <select class="form-control"  th:field="*{origem}"/>
-                    <option th:each="inicial : ${T(com.uem.manager.model.enums.Origem).values()}"
+                    <option th:each="inicial : ${T(com.uem.simple.manager.model.enums.Origem).values()}"
                           th:value="${inicial}"
                           th:text="${inicial.origem}"></option>
                 </select>
@@ -110,7 +117,7 @@
             <div class="col-md-6 form-group">
                 <label for="amount">Tipo</label>
                 <select class="form-control"  th:field="*{tipoProduto}"/>
-                    <option th:each="tp : ${T(com.uem.manager.model.enums.TipoProduto).values()}"
+                    <option th:each="tp : ${T(com.uem.simple.manager.model.enums.TipoProduto).values()}"
                           th:value="${tp}"
                           th:text="${tp.tipo}"></option>
                 </select>
@@ -119,7 +126,7 @@
             <div class="col-md-6 form-group">
                 <label for="amount">Ativo</label>
                 <select class="form-control"  th:field="*{ativo}"/>
-                    <option th:each="a : ${T(com.uem.manager.model.enums.Ativo).values()}"
+                    <option th:each="a : ${T(com.uem.simple.manager.model.enums.Ativo).values()}"
                           th:value="${a}"
                           th:text="${a.Ativo}"></option>
                 </select>
@@ -127,10 +134,13 @@
         </div>
 
 
-        <button class="btn btn-primary"  type="submit" >Cadastrar</button>
-        <button class="btn btn-dark"  type="reset">Limpar</button>
+        <div th:hidden="!${update}">
+            <button class="btn btn-primary" type="submit">Atualizar</button>
+            <a class="btn btn-info" th:href="@{/product}">Voltar</a>
+        </div>
         
     </form>
+    <a th:hidden="${update}" class="btn btn-info" th:href="@{/product}">Voltar</a>
 </div>
 </body>
 </html>

@@ -37,12 +37,12 @@ public class IndexController {
     public String report() {
         return "report";
     }
-
+    /*
     @GetMapping("/service")
     public String service() {
         return "service";
     }
-
+    */
     @GetMapping("/sale")
     public String sale() {
         return "sale";

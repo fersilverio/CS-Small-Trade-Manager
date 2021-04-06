@@ -1,6 +1,6 @@
 package com.uem.simple.manager.controller;
 
-import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -12,12 +12,10 @@ import com.uem.simple.manager.service.ProductService;
 import com.uem.simple.manager.service.SupplierService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -53,6 +51,7 @@ public class ProductController {
     public String addProduct(Model m){
         Produto product = new Produto();
         m.addAttribute("produto", product);
+        m.addAttribute("listaFornecedores", supplierService.findAll());
         return "product/new";
     }
 
@@ -62,20 +61,11 @@ public class ProductController {
         if (br.hasErrors()){
             return "product/new";
         }
-        
-        // acessar a lista de fornecedores por nome
-        List<Fornecedor> listaFornecedores = supplierService.findAll();
-        // precisaria do parametro vindo do front pra elaborar uma chamada a busca por nome fantasia do wanke
-        // talvez transformar o projeto pra one-to-one entre fornecedores e produtos
-        // product.setFornecedor();
-        // salvar fornecedor;
-        
-
-
-        return "";
-        
-
-        //continua
+        Optional<Fornecedor> supplier = supplierRepository.findById(product.fornecedor.getId());
+        Fornecedor sup = supplier.get();
+        product.setFornecedor(sup);
+        productRepository.save(product);
+        return "redirect:/product";
     }
 
 
@@ -84,6 +74,7 @@ public class ProductController {
         Produto product = productService.getProductById(id);
         m.addAttribute("produto", product);
         m.addAttribute("update", false);
+        m.addAttribute("listaFornecedores", supplierService.findAll());
         return "product/manage";
     }
 
@@ -93,7 +84,8 @@ public class ProductController {
         Produto product = productService.getProductById(id);
         m.addAttribute("produto", product);
         m.addAttribute("update", true);
-        return "supplier/manage";
+        m.addAttribute("listaFornecedores", supplierService.findAll());
+        return "product/manage";
     }
 
 

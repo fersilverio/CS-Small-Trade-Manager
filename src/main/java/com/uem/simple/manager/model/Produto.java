@@ -25,11 +25,11 @@ public class Produto {
 
 	@Column(name = "nome")
 	private String nome;
-	/*
-	 * @ManyToOne(fetch = FetchType.LAZY)
-	 * 
-	 * @JoinColumn(name = "produto_fornecedor_id") private Fornecedor fornecedor;
-	 */
+	
+	@ManyToOne(fetch = FetchType.LAZY) 
+	@JoinColumn(name = "fornecedor")
+    public Fornecedor fornecedor;
+	 
 	@Column(name = "unidade")
 	private String unidade;
 
@@ -173,5 +173,15 @@ public class Produto {
 	public void setTipoProduto(TipoProduto tipoProduto) {
 		this.tipoProduto = tipoProduto;
 	}
+
+
+	public Fornecedor getFornecedor() {
+		return this.fornecedor;
+	}
+
+	public void setFornecedor(Fornecedor fornecedor) {
+		this.fornecedor = fornecedor;
+	}
+
     
 }
