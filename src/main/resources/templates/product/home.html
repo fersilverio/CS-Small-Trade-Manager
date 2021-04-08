@@ -5,100 +5,53 @@
       layout:decorate="~{layout/model}">
 
 <head>
-    <title>Small Trade Manager - Consultar Produtos</title>
-
-    <script type="text/javascript">
-		function clearSearch() {
-			window.location = "[[@{/product}]]";
-		}
-	</script>
+	<title>Small Trade Manager &#8211; Consultar Serviços</title>
 </head>
+
 <body>
-<div class="container" layout:fragment="conteudo">
-    <div class="my-3 text-center">
-        <img alt="Produto" class="img-fluid mx-3" height="50" th:src="@{/img/product.svg}" width="50"/>
-        <h2>Produtos</h2>
-    </div>
+	
 
-    <form th:action="@{/product}">
-        <div class="form-row justify-content-center">
-            
-            
-            <div class="col-md-6 form-group">
-                <input type="text"  id="nome" name="nome" size="50" th:value="${nome}"   placeholder="Digitar o nome do produto" />
-            
-                <input class="btn btn-secondary btn-sm" type="button" value="Limpar busca" id="btnClear" onclick="clearSearch()" />
-            </div>
+	<div class="container" layout:fragment="conteudo">
+		<div class="my-3 text-center">
+			<img alt="Produto" class="img-fluid mx-3" height="50" th:src="@{/img/product.svg}" width="50"/>
+			<h2>Produto</h2> 
+			<a class="btn btn-primary" th:href="@{/product/new}"><i class="fas fa-plus"></i> Cadastro</a>
+		</div>
+	</div>
 
-            <div class="col-md-1 form-group">
-                <input class="btn btn-dark" type="submit" value="Procurar"/>
-                
-            
-            </div>
-            <div class="col-md-1 form-group">
-                <a class="btn btn-success" th:href="@{/product/new}">Cadastrar</a>
-            </div>
+	<div class="container-fluid" layout:fragment="conteudo-tabela">
+		<table class="table table-hover table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="row">Nome</th>
+					<th scope="row">Líquido(R$)</th>
+					<th scope="row">Bruto (R$)</th>
+					<th scope="row">Quantidade</th>
+					<th scope="row">Gerenciar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="product: ${ListaProdutos}">
+                    <td th:text="${product.nome}"></td>
+					<td th:text="${product.precoLiquido}"></td>
+					<td th:text="${product.precoBruto}"></td>
+					<td th:text="${product.qtd}"></td>		
+					<td>
+						<a class="btn btn-info" th:href="@{'/product/view/' + ${product.id}}">
+							<i class="fas fa-eye"></i>
+						</a>
+						<a class="btn btn-primary" th:href="@{'/product/edit/' + ${product.id} }">
+							<i class="fas fa-edit"></i>
+						</a>
+						<a class="btn btn-danger" th:href="@{'/product/delete/' + ${product.id} }">
+							<i class="fas fa-trash"></i>
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 
-            
-
-        </div>
-    </form>
-
-
-</div>
-
-<div class="container-fluid" layout:fragment="conteudo-tabela">
-    <table class="table table-hover table-striped">
-        <thead class="thead-dark">
-            <tr>
-
-                <th scope="row">Nome</th>
-                
-                <th scope="row">Líquido(R$)</th>
-                <th scope="row">Bruto(R$)</th>
-                <th scope="row">Unidade</th>
-                <th scope="row">Peso</th>
-                <th scope="row">Qtd</th>
-                <th scope="row">Origem</th>
-                <th scope="row">Estq. Min</th>
-                <th scope="row">Estq. Max</th>
-                <th scope="row">Carga HR (min)</th>
-
-                <th scope="row">Ativo</th>
-                <th scope="row">Compra(ID)</th>
-                <th scope="row">Orçamento(ID)</th>
-                <th scope="row">Tipo</th>
-                <th scope="row">Fornecedor(ID)</th>
-
-                <th scope="row">Gerenciar</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="produto: ${productList}">
-                <td th:text="${produto.nome}"></td>
-                <td th:text="${produto.precoLiquido}"></td>
-                <td th:text="${produto.precoBruto}"></td>
-                <td th:text="${produto.unidade}"></td>
-                <td th:text="${produto.peso}"></td>
-                <td th:text="${produto.qtd}"></td>
-                <td th:text="${produto.origem}"></td>
-                <td th:text="${produto.estoqueMin}"></td>
-                <td th:text="${produto.estoqueMax}"></td>
-                <td th:text="${produto.cargaHoraria}"></td>
-                <td th:text="${produto.ativo}"></td>
-                <td th:text="${produto.cargaHoraria}"></td>
-                <td th:text="${produto.cargaHoraria}"></td>
-                <td th:text="${produto.tipoProduto}"></td>
-                <td th:text="${produto.cargaHoraria}"></td>
-
-                <td>
-                    <a th:href="@{/product/update/{id}(id=${produto.id})}" class="btn btn-primary">Atualizar</a>
-                    <a th:href="@{/product/delete/{id}(id=${produto.id})}" class="btn btn-danger">Deletar</a>
-
-                </td>
-            </tr>
-            
-    </table>
-</div>
 </body>
+
 </html>
