@@ -41,47 +41,6 @@
 		</form>
 	</div>
 
-	<div class="table-responsive">
-		<table class="table table-hover table-striped">
-			<thead class="thead-dark">
-				<tr>
-					<th scope="row">Nome</th>
-					<th scope="row">Sobrenome</th>
-					<th scope="row">E-mail</th>
-					<th scope="row">Apelido</th>
-					<th scope="row">RG</th>
-					<th scope="row">CPF</th>
-					<th scope="row">Nascimento</th>
-					<th scope="row">Cidade</th>
-					<th scope="row">Estado</th>
-					<th scope="row">Contato</th>
-					<th scope="row">Gerenciar</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="funcionario: ${employeeList}">
-					<td th:text="${funcionario.nome}"></td>
-					<td th:text="${funcionario.sobrenome}"></td>
-					<td th:text="${funcionario.email}"></td>
-					<td th:text="${funcionario.apelido}"></td>
-					<td th:text="${funcionario.rg}"></td>
-					<td th:text="${funcionario.cpf}"></td>
-					<td th:text="${funcionario.dataNascimento}"></td>
-					<td th:text="${funcionario.cidade}"></td>
-					<td th:text="${funcionario.tipoEstado}"></td>
-					<td th:text="${funcionario.contato}"></td>
-					<td>
-						<a class="btn btn-primary" th:href="@{/showFormForUpdate/{id}(id = ${funcionario.id})}">Atualizar</a>
-						<a class="btn btn-danger" th:href="@{/deleteEmployeeById/{id}(id = ${funcionario.id})}">Deletar</a> 
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-
-
-
-
 	<div class="container-fluid" layout:fragment="conteudo-tabela">
 		<table class="table table-hover table-striped">
 			<thead class="thead-dark">
@@ -96,12 +55,13 @@
 				<th scope="row">Nascimento</th>
 				<th scope="row">Cidade</th>
 				<th scope="row">Estado</th>
-				<th scope="row">Contato</th>
+				<th scope="row">Telefone</th>
+				<th scope="row">Celular</th>
 				<th scope="row">Gerenciar</th>
 			</tr>
 			</thead>
 			<tbody class="text-center">
-				<tr th:each="funcionario: ${Listafuncionario}">
+				<tr th:each="funcionario: ${ListaFuncionarios}">
 					<td th:text="${funcionario.id}"></td>
 					<td th:text="${funcionario.nome}"></td>
 					<td th:text="${funcionario.sobrenome}"></td>
@@ -109,18 +69,19 @@
 					<td th:text="${funcionario.apelido}"></td>
 					<td th:text="${funcionario.rg}"></td>
 					<td th:text="${funcionario.cpf}"></td>
-					<td th:text="${funcionario.dataNascimento}"></td>
-					<td th:text="${funcionario.cidade}"></td>
-					<td th:text="${funcionario.tipoEstado}"></td>
-					<td th:text="${funcionario.contato}"></td>
+					<td th:text="${funcionario.nascimento}"></td>
+					<td th:text="${funcionario.cidade.nome}"></td>
+					<td th:text="${funcionario.cidade.estado}"></td>
+					<td th:text="${funcionario.telefone}"></td>
+					<td th:text="${funcionario.celular}"></td>
 					<td>
-						<a class="btn btn-info" th:href="@{'/funcionario/view/' + ${funcionario.id}}">
+						<a class="btn btn-info" th:href="@{'/employee/view/' + ${funcionario.id}}">
 							<i class="fas fa-eye"></i>
 						</a>
-						<a class="btn btn-primary" th:href="@{'/funcionario/edit/' + ${funcionario.id}}">
+						<a class="btn btn-primary" th:href="@{'/employee/edit/' + ${funcionario.id}}">
 							<i class="fas fa-edit"></i>
 						</a>
-						<a class="btn btn-danger" th:href="@{'/funcionario/delete/' + ${funcionario.id}}">
+						<a class="btn btn-danger" th:href="@{'/employee/delete/' + ${funcionario.id}}">
 							<i class="fas fa-trash"></i>
 						</a>
 					</td>

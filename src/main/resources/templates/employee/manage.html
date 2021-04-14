@@ -52,7 +52,7 @@
             <div class="col-md-6 form-group">
                 <label>Data de Nascimento</label>
                 <!-- ver se aqui nao da erro -->
-                <input type="text" th:field="*{dataNascimento}" class="form-control" th:readonly="!${update}">
+                <input type="text" th:field="*{nascimento}" class="form-control" th:readonly="!${update}">
             </div>
             <div class="col-md-6 form-group">
                 <label>Cidade</label>
@@ -68,9 +68,14 @@
                 </select>
             </div>
             <div class="col-md-6 form-group">
-                <label>Contato</label>
-                <input type="tel" th:field="*{contato}" class="form-control" placeholder="(43) 3661-2014" th:readonly="!${update}">
+                <label>Telefone</label>
+                <input type="tel" th:field="*{telefone}" class="form-control" placeholder="(43) 3661-2014" th:readonly="!${update}">
             </div>
+            <div class="col-md-6 form-group">
+                <label>Celular</label>
+                <input type="tel" th:field="*{celular}" class="form-control" placeholder="(43) 3661-2014" th:readonly="!${update}">
+            </div>
+        </div>
         <div th:hidden="!${update}">
             <button class="btn btn-primary" type="submit">Atualizar</button>
             <a class="btn btn-info" th:href="@{/employee}">Voltar</a>

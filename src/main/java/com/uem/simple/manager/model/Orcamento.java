@@ -1,12 +1,11 @@
+
 package com.uem.simple.manager.model;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,14 +19,10 @@ public class Orcamento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "orcamento")
-    private List<Produto> produtos = new ArrayList<>();
+    @OneToMany(mappedBy = "orcamento", cascade = CascadeType.ALL)
+    private List<ItemOrcamento> itens = new ArrayList<>();
 
-    private Integer qtd;
-
-    @CreationTimestamp
-    @Column(nullable = false, columnDefinition = "datetime")
-    private OffsetDateTime data;
+    private String data;
 
     private BigDecimal total;
 
@@ -40,27 +35,20 @@ public class Orcamento {
         this.id = id;
     }
 
-    public List<Produto> getProdutos() {
-        return this.produtos;
+    public List<ItemOrcamento> getItens() {
+        return this.itens;
     }
 
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
+    public void setItens(List<ItemOrcamento> itens) {
+        this.itens = itens;
     }
+    
 
-    public Integer getQtd() {
-        return this.qtd;
-    }
-
-    public void setQtd(Integer qtd) {
-        this.qtd = qtd;
-    }
-
-    public OffsetDateTime getData() {
+    public String getData() {
         return this.data;
     }
 
-    public void setData(OffsetDateTime data) {
+    public void setData(String data) {
         this.data = data;
     }
 
@@ -72,5 +60,11 @@ public class Orcamento {
         this.total = total;
     }
 
+    public void getValorTotalItens() {
+		this.total = getItens().stream()
+				.map(ItemOrcamento::getValorTotal)
+				.reduce(BigDecimal::add)
+				.orElse(BigDecimal.ZERO);
+	}
 
 }

@@ -15,7 +15,6 @@ import com.uem.simple.manager.service.EmployeeService;
 import javax.validation.Valid;
 
 import com.uem.simple.manager.model.Cidade;
-import com.uem.simple.manager.model.Fornecedor;
 import com.uem.simple.manager.model.Funcionario;
 import com.uem.simple.manager.repository.CidadeRepository;
 import com.uem.simple.manager.repository.FuncionarioRepository;
@@ -38,6 +37,7 @@ public class EmployeeController {
     @GetMapping
     public String employee(Model m){
         m.addAttribute("ListaFuncionarios", employeeService.findAll());
+        System.out.println(employeeService.findAll());
         return "employee/home";
     }
 
@@ -56,7 +56,9 @@ public class EmployeeController {
         Cidade cidade = new Cidade();
         cidade.setEstado(employee.getCidade().getEstado());
         cidade.setNome(employee.getCidade().getNome());
-        cidadeRepository.saveAndFlush(employee);
+        cidadeRepository.saveAndFlush(cidade);
+        employee.setCidade(cidade);
+        funcionarioRepository.saveAndFlush(employee);
         return "redirect:/employee";
     }
 
@@ -70,6 +72,14 @@ public class EmployeeController {
 
     @GetMapping("/edit/{id}")
     public String editEmployee(@PathVariable Long id, Model m){
+        Funcionario employee = employeeService.getEmployeeById(id);
+        m.addAttribute("funcionario", employee);
+        m.addAttribute("update", true);
+        return "employee/manage";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteEmployee(@PathVariable Long id, Model m){
         Funcionario employee = employeeService.getEmployeeById(id);
         funcionarioRepository.delete(employee);
         return "redirect:/employee";

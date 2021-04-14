@@ -5,8 +5,6 @@
       layout:decorate="~{layout/model}">
 
 <head>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
     <title>Small Trade Manager - Cadastro para Funcionarios</title>
 </head>
 <body>
@@ -57,20 +55,24 @@
             </div>
             <div class="col-md-6 form-group">
                 <label>Cidade</label>
-                <input type="text" th:field="*{cidade}" class="form-control">
+                <input type="text" th:field="*{cidade.nome}" class="form-control">
             </div>
         </div>
         <div class="form-row">
             <div class="col-md-6 form-group">
                 <label>Estado</label>
-                <select class="form-control" th:field="*{endereco.cidade.estado}">
+                <select class="form-control" th:field="*{cidade.estado}">
                     <option th:each="sigla : ${T(com.uem.simple.manager.model.enums.Estado).values()}"
                             th:value="${sigla}" th:text="${sigla.estado}"></option>
                 </select>
             </div>
             <div class="col-md-6 form-group">
-                <label>Contato</label>
-                <input type="text" th:field="*{contato}" class="form-control">
+                <label>Telefone</label>
+                <input type="text" th:field="*{telefone}" class="form-control">
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Celular</label>
+                <input type="text" th:field="*{celular}" class="form-control">
             </div>
         </div>
         <button class="btn btn-primary" type="submit">Cadastrar</button>
