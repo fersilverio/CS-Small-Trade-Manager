@@ -21,12 +21,12 @@
         <div class="form-row">
             <div class="col-md-6 form-group">
                 <label for="name">Nome</label>
-                <input type="text" th:field="*{nome}" class="form-control"  placeholder="Headset Gamer HyperX Cloud Revolver" />
+                <input type="text" th:field="*{nome}" class="form-control"  placeholder="Headset Gamer HyperX Cloud Revolver" th:readonly="!${update}"/>
             </div>
 
             <div class="col-md-6 form-group">
                 <label for="amount">Fornecedor</label>
-                <select class="form-control"  th:field="*{fornecedor}"/>
+                <select class="form-control"  th:field="*{fornecedor}" th:disabled="!${update}">
                     <option th:each="sup : ${listaFornecedores}"
                           th:value="${sup.id}"
                           th:text="${sup.nomeFantasia}"></option>
@@ -39,7 +39,7 @@
 
             <div class="col-md-6 form-group">
                 <label for="unity">Unidade</label>
-                <select  th:field="*{unidade}" class="form-control">
+                <select  th:field="*{unidade}" class="form-control" th:disabled="!${update}">
                     <option disabled selected value="">Escolha uma unidade de medida</option>
                     <option th:value="CT" th:text="CT">CT</option>
                     <option th:value="CX" th:text="CX">CX</option>
@@ -67,33 +67,33 @@
         <div class="form-row">
             <div class="col-md-6 form-group">
                 <label for="gross_price">Preço Bruto</label>
-                <input class="form-control"   type="text" th:field="*{precoBruto}"  placeholder="420.00"/>
+                <input class="form-control"   type="text" th:field="*{precoBruto}"  placeholder="420.00" th:readonly="!${update}"/>
             </div>
             <div class="col-md-6 form-group">
                 <label for="net_price">Preço Líquido</label>
-                <input class="form-control"   type="text" th:field="*{precoLiquido}"  placeholder="420.00"/>
+                <input class="form-control"   type="text" th:field="*{precoLiquido}"  placeholder="420.00" th:readonly="!${update}"/>
             </div>
         </div>
 
         <div class="form-row">
             <div class="col-md-6 form-group">
                 <label for="minimum_stock">Estoque Mínimo</label>
-                <input class="form-control"  th:field="*{estoqueMin}"  placeholder="5" type="text"/>
+                <input class="form-control"  th:field="*{estoqueMin}"  placeholder="5" type="text" th:readonly="!${update}"/>
             </div>
             <div class="col-md-6 form-group">
                 <label for="maximum_stock">Estoque Máximo</label>
-                <input class="form-control"  th:field="*{estoqueMax}"  placeholder="50" type="text"/>
+                <input class="form-control"  th:field="*{estoqueMax}"  placeholder="50" type="text" th:readonly="!${update}"/>
             </div>
         </div>
 
         <div class="form-row">
             <div class="col-md-6 form-group">
                 <label for="amount">Quantidade</label>
-                <input class="form-control"  th:field="*{qtd}"  placeholder="30" type="text"/>
+                <input class="form-control"  th:field="*{qtd}"  placeholder="30" type="text" th:readonly="!${update}"/>
             </div>
             <div class="col-md-6 form-group">
                 <label for="weigth">Peso</label>
-                <input class="form-control" th:field="*{peso}"  placeholder="1.270" type="text"/>
+                <input class="form-control" th:field="*{peso}"  placeholder="1.270" type="text" th:readonly="!${update}"/>
             </div>
         </div>
 
@@ -101,7 +101,7 @@
         <div class="form-row">
             <div class="col-md-6 form-group">
                 <label for="amount">Origem</label>
-                <select class="form-control"  th:field="*{origem}"/>
+                <select class="form-control"  th:field="*{origem}" th:disabled="!${update}">
                     <option th:each="inicial : ${T(com.uem.simple.manager.model.enums.Origem).values()}"
                           th:value="${inicial}"
                           th:text="${inicial.origem}"></option>
@@ -109,14 +109,14 @@
             </div>
             <div class="col-md-6 form-group">
                 <label for="weigth">Carga horária (min)</label>
-                <input class="form-control" th:field="*{cargaHoraria}"  type="text"/>
+                <input class="form-control" th:field="*{cargaHoraria}"  type="text" th:readonly="!${update}"/>
             </div>
         </div>
 
         <div class="form-row">
             <div class="col-md-6 form-group">
                 <label for="amount">Tipo</label>
-                <select class="form-control"  th:field="*{tipoProduto}"/>
+                <select class="form-control"  th:field="*{tipoProduto}" th:disabled="!${update}">
                     <option th:each="tp : ${T(com.uem.simple.manager.model.enums.TipoProduto).values()}"
                           th:value="${tp}"
                           th:text="${tp.tipo}"></option>
@@ -125,7 +125,7 @@
 
             <div class="col-md-6 form-group">
                 <label for="amount">Ativo</label>
-                <select class="form-control"  th:field="*{ativo}"/>
+                <select class="form-control"  th:field="*{ativo}" th:disabled="!${update}">
                     <option th:each="a : ${T(com.uem.simple.manager.model.enums.Ativo).values()}"
                           th:value="${a}"
                           th:text="${a.Ativo}"></option>
