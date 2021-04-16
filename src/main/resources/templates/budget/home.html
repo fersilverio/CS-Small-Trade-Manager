@@ -12,24 +12,76 @@
     <div class="my-3 text-center">
         <img alt="Produto" class="img-fluid mx-3" height="50" th:src="@{/img/budget.svg}" width="50"/>
         <h2>Orçamentos</h2>
+        <a class="btn btn-primary" th:href="@{/budget/new}"><i class="fas fa-plus"></i> Cadastro</a>
     </div>
+</div>
 
-    <form accept-charset="utf-8" action="/search_budget" autocomplete="on" enctype="application/x-www-form-urlencoded" id="search_budget" method="get" name="search_budget" rel="noopener" target="_self">
-        <div class="form-row justify-content-center">
-            <div class="col-md-4 form-group">
-                <input class="form-control" form="search_budget" id="search" name="search" placeholder="Procurar orçamento" type="search"/>
-            </div>
-            <div class="col-md-1 form-group">
-                <input class="btn btn-dark" form="search_budget" type="submit" value="Procurar">
-            </div>
-            <div class="col-md-1 form-group">
-                <a class="btn btn-primary" th:href="@{/budget/new}">Cadastrar</a>
-            </div>
-        </div>
-    </form>
 </div>
 
 <div class="container-fluid" layout:fragment="conteudo-tabela">
+    
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+        ?
+    </button>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h3 class="Guia para controle de orçamentos" id="exampleModalLabel">Guia para controle de orçamentos</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <h3>Home de Orçamentos</h3>
+                <p>
+                    Ao selecionar a aba "Orçamentos" o programa irá redirecionar o usuário para a página inicial de orçamentos, no qual contém os orçamentos ja cadastrados e salvos no sistema.
+                </p>
+                <p>O primeiro botão da tela, que possui a função de direcionar o usuário para a tela de cadastro</p>
+                <img class="imagem" th:src=@{img/help/cadastro.png}>
+            
+                <p>
+                    No final de cada linha orçamento na relação em forma de tabela, temos a coluna "Gerenciar", que possui os seguintes botões.
+                </p>
+            
+                <img class="imagem" th:src=@{img/help/gerenciar.png}>
+            
+                <p>O primeiro botão tem por função direcionar o usuário para a tela de visualização daquele orçamento específico.</p>
+                <img class="imagem" th:src=@{img/help/read.png}>
+                <p>O segundo botão direciona o usuário para a tela de atualização, no qual os dados já cadastrados podem ser alterados.</p>
+                <img class="imagem" th:src=@{img/help/update.png}>
+                <p>O terceiro botão exclui o orçamento daquela linha em específico.</p>
+                <img class="imagem" th:src=@{img/help/delete.png}>
+            
+                <h3>Cadastro de Orçamentos</h3>
+                <p>Ao entrar na tela de cadastro de orçamentos o usuário poderá preencher os campos referentes às informações do orçamento.</p>
+            
+                <p>A área de seleção é onde o usuário irá selecionar um produto cadastrado no sistema para incluir no orçamento.</p>
+                <img class="imagem" th:src=@{img/help/dropDown.png}>
+            
+                <p>O campo de texto ao lado é para o usuário colocar a quantidade daquele determinado produto escolhido na área de seleção a esquerda.</p>
+                <p>Para alterar o valor da quantidade de um produto já cadastrado, basta selecionar o produto na área de seleção e colocar a quantidade que deseja somar ou subtrair na quantidade.</p>
+                <p> - Um número positivo para aumentar a quantidade;</p>
+                <p> - Um número negativo para diminuir a quantidade.</p>
+                <img class="imagem" th:src=@{img/help/quantidade.png}>
+            
+                <p>O botão ao lado direito é para adicionar o determinado produto e a sua quantidade desejada e, caso o produto já esteja inserido no orçamento, então somente a sua quantidade será alterada.</p>
+                <img class="imagem" th:src=@{img/help/adicionar.png}>
+            
+                <p>O botão em cada linha de um produto inserido no orçamento tem como finalidade excluir aquele deterinado produto.</p>
+                <img class="imagem" th:src=@{img/help/delete.png}>
+            
+            </div>
+            <div class="model-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+            
+        </div>
+        </div>
+    </div>
+
+    
     <table class="table table-hover table-striped">
         <thead class="thead-dark text-center">
         <tr>
