@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout/model}">
+
+<head>
+    <title th:text="${update == true ? 'Small Trade Manager - Atualizar Cliente' : 'Small Trade Manager - Visualizar Cliente'}"></title>
+</head>
+<body>
+<div class="container" layout:fragment="conteudo">
+    <div class="my-3 text-center">
+        <img alt="Cliente" class="img-fluid mx-3" height="50" th:src="@{/img/client.svg}" width="50"/>
+        <h2 th:text="${update == true ? 'Atualizar Cliente' : 'Visualizar Cliente'}"></h2>
+    </div>
+</div>
+
+<div class="container" layout:fragment="conteudo-tabela">
+    <form accept-charset="utf-8" th:action="@{/client/add}" th:object="${cliente}" method="post">
+        <input type="hidden" th:field="${cliente.id}">
+        <div class="form-row">
+            <div class="col-md-6 form-group">
+                <label>Nome</label>
+                <input type="text" th:field="*{nome}" class="form-control" placeholder="Luiz Joaquim" th:readonly="!${update}">
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Sobrenome</label>
+                <input type="text" th:field="*{sobrenome}" class="form-control" placeholder="Aderaldo Amichi" th:readonly="!${update}">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 form-group">
+                <label>RG</label>
+                <input type="text" th:field="*{rg}" class="form-control" placeholder="13.340.570-4" th:readonly="!${update}">
+            </div>
+            <div class="col-md-6 form-group">
+                <label>CPF</label>
+                <input type="text" th:field="*{cpf}" class="form-control" placeholder="074.584.539-82" th:readonly="!${update}">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 form-group">
+                <label>Data de Nascimento</label>
+                <input type="text" th:field="*{nascimento}" class="form-control" placeholder="dd/mm/yyyy" th:readonly="!${update}">
+            </div>
+            <div class="col-md-6 form-group">
+                <label>E-mail</label>
+                <input type="email" th:field="*{email}" class="form-control" placeholder="luizamichi@gmail.com" th:readonly="!${update}">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 form-group">
+                <label>Endereço</label>
+                <input type="text" th:field="*{endereco.logradouro}" class="form-control" placeholder="Rua Mandaguari, 32" th:readonly="!${update}">
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Complemento</label>
+                <input type="text" th:field="*{endereco.complemento}" class="form-control" placeholder="Apartamento 102" th:readonly="!${update}">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 form-group">
+                <label>CEP</label>
+                <input type="text" th:field="*{endereco.cep}" class="form-control" placeholder="87020-230" th:readonly="!${update}">
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Bairro</label>
+                <input type="text" th:field="*{endereco.bairro}" class="form-control" placeholder="Zona 07" th:readonly="!${update}">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 form-group">
+                <label>Cidade</label>
+                <input type="text" th:field="*{endereco.cidade.nome}" class="form-control" placeholder="Maringá" th:readonly="!${update}">
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Estado</label>
+                <select class="form-control" th:field="*{endereco.cidade.estado}" th:disabled="!${update}">
+                    <option th:each="sigla : ${T(com.uem.simple.manager.model.enums.Estado).values()}"
+                            th:value="${sigla}" th:text="${sigla.estado}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 form-group">
+                <label>Telefone</label>
+                <input type="tel" th:field="*{telefone}" class="form-control" placeholder="(43) 3661-2014" th:readonly="!${update}">
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Celular</label>
+                <input type="tel" th:field="*{celular}" class="form-control" placeholder="(44) 99866-5521" th:readonly="!${update}">
+            </div>
+        </div>
+        <div th:hidden="!${update}">
+            <button class="btn btn-primary" type="submit">Atualizar</button>
+            <a class="btn btn-info" th:href="@{/client}">Voltar</a>
+        </div>
+    </form>
+    <a th:hidden="${update}" class="btn btn-info" th:href="@{/client}">Voltar</a>
+</div>
+</body>
+</html>

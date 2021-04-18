@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout/model}">
+
+<head>
+    <title th:text="${update == true ? 'Small Trade Manager - Atualizar Serviço' : 'Small Trade Manager - Visualizar Serviço'}"></title>
+</head>
+<body>
+<div class="container" layout:fragment="conteudo">
+    <div class="my-3 text-center">
+        <img alt="Servico" class="img-fluid mx-3" height="50" th:src="@{/img/service.svg}" width="50"/>
+        <h2 th:text="${update == true ? 'Atualizar Serviço' : 'Visualizar Serviço'}"></h2>
+    </div>
+</div>
+
+<div class="container" layout:fragment="conteudo-tabela">
+    <form accept-charset="utf-8" th:action="@{/service/add}" th:object="${servico}" method="post">
+        <input type="hidden" th:field="${servico.id}">
+		<div class="form-row">
+			<div class="col-md-6 form-group">
+				<label for="name">Nome</label>
+				<input type="text" th:field="*{nome}" class="form-control" placeholder="Formatação com Windows 10" th:readonly="!${update}"/>
+			</div>
+			<div class="col-md-6 form-group">
+				<label for="unity">Tipo</label>
+				<select class="form-control"  th:field="*{tipo}" th:disabled="!${update}">
+					<option th:each="tp : ${T(com.uem.simple.manager.model.enums.TipoServico).values()}"
+					 th:value="${tp}"
+					 th:text="${tp.tipoServico}"></option>
+					
+				</select>
+			</div>
+		</div>
+
+		<div class="form-row">
+			<div class="col-md-6 form-group">
+				<label for="price">Preço</label>
+				<input class="form-control"   type="text" th:field="*{preco}"  placeholder="50.00" th:readonly="!${update}"/>
+			</div>
+			<div class="col-md-6 form-group">
+				<label for="workload">Carga Horária (min)</label>
+				<input type="text" th:field="*{cargaHoraria}" class="form-control" placeholder="50" th:readonly="!${update}"/>
+			</div>
+		</div>
+        <div th:hidden="!${update}">
+            <button class="btn btn-primary" type="submit">Atualizar</button>
+            <a class="btn btn-info" th:href="@{/service}">Voltar</a>
+        </div>
+    </form>
+    <a th:hidden="${update}" class="btn btn-info" th:href="@{/service}">Voltar</a>
+</div>
+</body>
+</html>

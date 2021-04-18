@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout/model}">
+
+<head>
+    <title>Small Trade Manager - Consultar Relatório de Produtos</title>
+</head>
+<body>
+<div class="container" layout:fragment="conteudo">
+    <div class="my-3 text-center">
+        <img alt="Relatório de Produtos" class="img-fluid mx-3" height="50" th:src="@{/img/report.svg}" width="50"/>
+        <h2>Relatório de Produtos</h2>
+        
+    </div>
+
+   
+</div>
+
+<div class="container-fluid" layout:fragment="conteudo-tabela">
+    <table class="table table-hover table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="row">Nome</th>
+                <th scope="row">Quantidade</th>
+                <th scope="row">Estoque mínimo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product: ${relacaoProd}">
+                <td th:text="${product.nome}"></td>
+                <td th:text="${product.qtd}"></td>
+                <td th:text="${product.estoqueMin}"></td>		
+            </tr>
+        </tbody>
+    </table>
+
+    <tr th:each="count: ${numContador}">
+        <td class="aviso" th:text="${count}"></td>
+    </tr>
+    <table class="table table-dark">
+        <thead class="btn-danger">
+            <tr>
+                <th scope="row">Nome</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="prod: ${relacaoFiltrada}">
+                <td th:text="${prod.nome}"></td>	
+            </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-info" th:href="@{/report}">Voltar</a>
+</div>
+
+
+</body>
+</html>

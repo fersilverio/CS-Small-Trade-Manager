@@ -33,16 +33,16 @@ public class IndexController {
     //     return "product";
     // }
 
-    @GetMapping("/report")
-    public String report() {
-        return "report";
-    }
-
+    //@GetMapping("/report")
+    //public String report() {
+      //  return "report";
+    //}
+    /*
     @GetMapping("/service")
     public String service() {
         return "service";
     }
-
+    */
     @GetMapping("/sale")
     public String sale() {
         return "sale";

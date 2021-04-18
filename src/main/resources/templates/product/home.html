@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout/model}">
+
+<head>
+	<title>Small Trade Manager &#8211; Consultar Produtos</title>
+</head>
+
+<body>
+	
+
+	<div class="container" layout:fragment="conteudo">
+		<div class="my-3 text-center">
+			<img alt="Produtos" class="img-fluid mx-3" height="50" th:src="@{/img/product.svg}" width="50"/>
+			<h2>Produtos</h2> 
+			<a class="btn btn-primary" th:href="@{/product/new}"><i class="fas fa-plus"></i> Cadastro</a>
+		</div>
+	</div>
+
+	<div class="container-fluid" layout:fragment="conteudo-tabela">
+		
+		
+		<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+			?
+  		</button>
+
+		
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+				<h3 class="Guia para controle de produtos" id="exampleModalLabel">Guia para controle de produtos</h3>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				</div>
+				<div class="modal-body">
+					<p>Segue um guia para orientar o usuário com relação aos botões presentes nas telas do STM para o controle de produtos, cada botão será explicado.</p>
+					<p>Entretanto vale salientar que se o botão explicado aparecer mais de uma vez em telas diferentes, o mesmo possui a mesma função.</p>
+					<h3>Home de produtos</h3>
+					<p>
+						Ao selecionar a aba "Produtos" o programa irá direcionar o usuário para a página inicial de produtos que contém uma relação
+						com todos os produtos cadastrados no sistema e também com alguns botões.
+					</p>
+					<p>O primeiro botão da tela, que possui função de direcionar o usuário para a tela de cadastro</p>
+					<img th:src=@{img/help/cadastro.png}>
+
+					<p>
+						No final da linha de cada produto na relação em forma de tabela, temos a coluna denominada "Gerenciar",
+						que possui os seguintes botões.
+					</p>
+
+					<img th:src=@{img/help/gerenciar.png}>
+
+					<p>Segue o primeiro da coluna gerenciar que possui a função de direcionar o usuário para a tela de visualização do produto em questão.</p>
+					<img th:src=@{img/help/read.png}>
+					<p>O segundo botão possui a função de direcionar o usuário para a tela de atualuzação (ou alteração de dados) do produto em questão.</p>
+					<img th:src=@{img/help/update.png}>
+					<p>O terceiro e último botão possui a função de deletar o produto em questão.</p>
+					<img th:src=@{img/help/delete.png}>
+
+					<h3>Cadastro de produtos</h3>
+					<p>Ao entrar na tela de cadastro o usuário terá como preencher campos referentes às informações do produto como segue abaixo.</p>
+					<img th:src=@{img/help/campos.png}>
+					<p>Ao inserir as informações o usuário verá dois botões no final do formulário.</p>
+					<p>O primeiro possui a função de confirmar o cadastro</p>
+					<img th:src=@{img/help/cadastrar.png}>
+					<p>Já o segundo possui a finalidade para limpar todo o cadastro, para recomeçar o mesmo do zero.</p>
+					<img th:src=@{img/help/limpar.png}>
+
+					<h3>Visualização de produto</h3>
+					<p>Ao selecionar o botão para visualizar o produto as informações aparecerão para o usuário, porém sem a possibilidade de alterá-las.</p>
+					<p>Após visualizar o produto e se desejar retornar para a página inicial o botão abaixo realiza essa tarefa.</p>
+					<img  th:src=@{img/help/voltar.png}>
+					<p>O botão voltar está presente em todas as telas do controle de produtos com exceção da inicial.</p>
+					<h3>Atualização de produto</h3>
+					<p>Após selecionar o botão de atualização de produto as informações do produto selecionado aparecerão e também poderão ser alteradas.</p>
+					<p>Para confirmar as alterações o botão abaixo possui a finalidade de realizar essa tarefa.</p>
+					<img  th:src=@{img/help/atualizar.png}>
+				
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+				</div>
+			</div>
+			</div>
+		</div>
+
+
+		<table class="table table-hover table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="row">Nome</th>
+					<th scope="row">Líquido(R$)</th>
+					<th scope="row">Bruto (R$)</th>
+					<th scope="row">Quantidade</th>
+					<th scope="row">Gerenciar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="product: ${ListaProdutos}">
+                    <td th:text="${product.nome}"></td>
+					<td th:text="${product.precoLiquido}"></td>
+					<td th:text="${product.precoBruto}"></td>
+					<td th:text="${product.qtd}"></td>		
+					<td>
+						<a class="btn btn-info" th:href="@{'/product/view/' + ${product.id}}">
+							<i class="fas fa-eye"></i>
+						</a>
+						<a class="btn btn-primary" th:href="@{'/product/edit/' + ${product.id} }">
+							<i class="fas fa-edit"></i>
+						</a>
+						<a class="btn btn-danger" th:href="@{'/product/delete/' + ${product.id} }">
+							<i class="fas fa-trash"></i>
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</body>
+
+</html>

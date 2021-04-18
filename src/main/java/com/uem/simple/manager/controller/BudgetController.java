@@ -77,7 +77,7 @@ public class BudgetController {
     /* verifica se a quantidade excede o que tem no estoque, se não, adiciona o produto*/
     @PostMapping("/add_product")
     public String addProduct(AddProdutoDTO produtoDTO, RedirectAttributes ra){
-        if(produtoDTO.getProduto().getEstoqueMax() < produtoDTO.getQtd()){
+        if(produtoDTO.getQtd() > produtoDTO.getProduto().getEstoqueMax()){
             ra.addFlashAttribute("aviso", "quantidade excede o limite em estoque!");
             return "redirect:/budget/new";
         }

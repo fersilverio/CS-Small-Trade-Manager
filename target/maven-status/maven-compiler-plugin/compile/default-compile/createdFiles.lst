@@ -1,7 +1,0 @@
-com/uem/manager/model/Funcionario.class
-com/uem/manager/controller/EmployeeController.class
-com/uem/manager/model/enums/TipoEstado.class
-com/uem/manager/service/FuncionarioServiceImpl.class
-com/uem/manager/service/FuncionarioService.class
-com/uem/manager/ManagerApplication.class
-com/uem/manager/repository/EmployeeRepository.class

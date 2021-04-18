@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout/model}">
+<head>
+    <title>Small Trade Manager - Cadastrar Orçamento</title>
+</head>
+<body>
+<div class="container" layout:fragment="conteudo">
+    <div class="my-3 text-center">
+        <img alt="Produto" class="img-fluid mx-3" height="50" th:src="@{/img/budget.svg}" width="50"/>
+        <h2>Orçamentos</h2>
+    </div>
+</div>
+
+<div class="container-fluid" layout:fragment="conteudo-tabela">
+    
+    <div th:if="${aviso}" class="alert alert-danger alert-dismissible fade show" role="alert" th:text=${aviso}>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+
+    <form accept-charset="utf-8" th:action="@{/budget/add_product}" th:object="${produtoDTO}" method="POST">
+
+        <input type="hidden" th:field="*{id}">
+
+        <div class="form-row justify-content-center">
+            <div class="col-md-4 form-group">
+                <select class="form-control" th:field="*{produto}">
+                    <option th:each="prod: ${ListaProdutos}"
+                    th:value="${prod.id}"
+                    th:text="${prod.nome}"></option>
+                </select>
+            </div>
+            <div class="col-md-1 form-group">
+                <label>Quantidade</label>
+            </div>
+            <div class="col-md-1 form-group">
+                <input type="text" th:field="*{qtd}" class="form-control" required="true">
+            </div>
+            <div class="col-md-1 form-group">
+                <button class="btn btn-primary" type="submit">Adicionar</button>
+            </div>
+        </div>
+
+    </form>
+    
+    <table class="table table-hover table-striped">
+        <thead class="thead-dark text-center">
+        <tr>
+            <th scope="row">ID</th>
+            <th scope="row">Produto</th>
+            <th scope="row">Preço Unitário</th>
+            <th scope="row">Quantidade</th>
+            <th scope="row">Excluir</th>
+        </tr>
+        </thead>
+        <tbody class="text-center">
+            <tr th:each="produto: ${lista}">
+                <td th:text="${produto.id}"></td>
+                <td th:text="${produto.produto.nome}"></td>
+                <td th:text="${produto.precoUnitario}"></td>
+                <td th:text="${produto.qtd}"></td>
+                <td>
+                    <a class="btn btn-danger" th:href="@{'/budget/delete_item/' + ${produtoDTO.id} + '/' + ${produto.id}}">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot class="text-right bg-dark text-white">
+            <tr>
+                <td colspan="6" th:text="'Total: ' + ${total}"></td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <a class="btn btn-info" th:href="@{/budget}">Voltar</a>
+
+</div>
+
+</body>
+
+</html>
