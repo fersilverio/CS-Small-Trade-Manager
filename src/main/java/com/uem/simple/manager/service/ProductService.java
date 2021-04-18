@@ -31,10 +31,10 @@ public class ProductService {
     public String count(){
         Integer count = pr.countProductsLowerThanMinimum().size();
         if (count > 0){
-            return "AVISO: Há " + count + " produtos com quantidades abaixo do mínimo esperado no estoque, recomenda-se o reabastecimento dos produtos listados abaixo.";
+            return "AVISO: Há " + count + " produto(s) com quantidades abaixo do mínimo esperado no estoque, recomenda-se o reabastecimento dos produtos listados abaixo.";
         }
         else{
-            return "Estoque em ordem, nenhuma observação no momento";
+            return "Estoque em ordem, nenhuma observação no momento.";
         }
         
     }
