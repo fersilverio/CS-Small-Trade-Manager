@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout/model}">
+
+<head>
+    <title th:text="${update == true ? 'Small Trade Manager - Atualizar Funcionário' : 'Small Trade Manager - Visualizar Funcionario'}"></title>
+</head>
+<body>
+<div class="container" layout:fragment="conteudo">
+    <div class="my-3 text-center">
+        <img alt="Funcionario" class="img-fluid mx-3" height="50" th:src="@{/img/employee.svg}" width="50"/>
+        <h2 th:text="${update == true ? 'Atualizar Funcionario' : 'Visualizar Funcionario'}"></h2>
+    </div>
+</div>
+
+<div class="container" layout:fragment="conteudo-tabela">
+    <form accept-charset="utf-8" th:action="@{/employee/add}" th:object="${funcionario}" method="post">
+        <input type="hidden" th:field="${funcionario.id}">
+        <div class="form-row">
+            <div class="col-md-6 form-group">
+                <label>Nome</label>
+                <input type="text" th:field="*{nome}" name = "nome" class="form-control" placeholder="Luiz Joaquim" th:readonly="!${update}">
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Sobrenome</label>
+                <input type="text" th:field="*{sobrenome}" class="form-control" placeholder="Aderaldo Amichi" th:readonly="!${update}">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 form-group">
+                <label>Email</label>
+                <input type="email" th:field="*{email}" class="form-control" th:readonly="!${update}">
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Apelido</label>
+                <input type="text" th:field="*{apelido}" class="form-control" th:readonly="!${update}">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 form-group">
+                <label>RG</label>
+                <input type="text" th:field="*{rg}" class="form-control" th:readonly="!${update}">
+            </div>
+            <div class="col-md-6 form-group">
+                <label>CPF</label>
+                <input type="text" th:field="*{cpf}" class="form-control" th:readonly="!${update}">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 form-group">
+                <label>Data de Nascimento</label>
+                <!-- ver se aqui nao da erro -->
+                <input type="text" th:field="*{nascimento}" class="form-control" th:readonly="!${update}">
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Cidade</label>
+                <input type="text" th:field="*{cidade.nome}" class="form-control" placeholder="Maringá" th:readonly="!${update}">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 form-group">
+                <label>Estado</label>
+                <select class="form-control" th:field="*{cidade.estado}" th:disabled="!${update}">
+                    <option th:each="sigla : ${T(com.uem.simple.manager.model.enums.Estado).values()}"
+                            th:value="${sigla}" th:text="${sigla.estado}"></option>
+                </select>
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Telefone</label>
+                <input type="tel" th:field="*{telefone}" class="form-control" placeholder="(43) 3661-2014" th:readonly="!${update}">
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Celular</label>
+                <input type="tel" th:field="*{celular}" class="form-control" placeholder="(43) 3661-2014" th:readonly="!${update}">
+            </div>
+        </div>
+        <div th:hidden="!${update}">
+            <button class="btn btn-primary" type="submit">Atualizar</button>
+            <a class="btn btn-info" th:href="@{/employee}">Voltar</a>
+        </div>
+    </form>
+    <a th:hidden="${update}" class="btn btn-info" th:href="@{/employee}">Voltar</a>
+</div>
+</body>
+</html>

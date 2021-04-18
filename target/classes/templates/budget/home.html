@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout/model}">
+
+<head>
+    <title>Small Trade Manager - Consultar Orçamento</title>
+</head>
+<body>
+<div class="container" layout:fragment="conteudo">
+    <div class="my-3 text-center">
+        <img alt="Produto" class="img-fluid mx-3" height="50" th:src="@{/img/budget.svg}" width="50"/>
+        <h2>Orçamentos</h2>
+    </div>
+
+    <form accept-charset="utf-8" action="/search_budget" autocomplete="on" enctype="application/x-www-form-urlencoded" id="search_budget" method="get" name="search_budget" rel="noopener" target="_self">
+        <div class="form-row justify-content-center">
+            <div class="col-md-4 form-group">
+                <input class="form-control" form="search_budget" id="search" name="search" placeholder="Procurar orçamento" type="search"/>
+            </div>
+            <div class="col-md-1 form-group">
+                <input class="btn btn-dark" form="search_budget" type="submit" value="Procurar">
+            </div>
+            <div class="col-md-1 form-group">
+                <a class="btn btn-primary" th:href="@{/budget/new}">Cadastrar</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="container-fluid" layout:fragment="conteudo-tabela">
+    <table class="table table-hover table-striped">
+        <thead class="thead-dark text-center">
+        <tr>
+            <th scope="row">ID</th>
+            <th scope="row">Data</th>
+            <th scope="row">Total</th>
+            <th scope="row">Gerenciar</th>
+        </tr>
+        </thead>
+        <tbody class="text-center">
+            <tr th:each="orcamento: ${ListaOrcamentos}">
+                <td th:text="${orcamento.id}"></td>
+                <td th:text="${orcamento.data}"></td>
+                <td th:text="'R$ ' + ${orcamento.total}"></td>
+                <td>
+                    <a class="btn btn-info" th:href="@{'/budget/view/' + ${orcamento.id}}">
+                        <i class="fas fa-eye"></i>
+                    </a>
+                    <a class="btn btn-primary" th:href="@{'/budget/edit/' + ${orcamento.id}}">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a class="btn btn-danger" th:href="@{'/budget/delete/' + ${orcamento.id}}">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+</body>
+</html>

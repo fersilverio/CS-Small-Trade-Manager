@@ -18,15 +18,15 @@ public class IndexController {
     //     return "provider";
     // }
 
-    @GetMapping("/employee")
-    public String employee() {
-        return "employee";
-    }
+    //@GetMapping("/employee")
+    //public String employee() {
+    //    return "employee";
+    //}
 
-    @GetMapping("/budget")
-    public String budget() {
-        return "budget";
-    }
+    //@GetMapping("/budget")
+    //public String budget() {
+    //    return "budget";
+    //}
 
     // @GetMapping("/product")
     // public String product() {

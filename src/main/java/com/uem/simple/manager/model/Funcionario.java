@@ -3,10 +3,8 @@ package com.uem.simple.manager.model;
 import com.uem.simple.manager.model.enums.Role;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.time.OffsetDateTime;
 
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -34,9 +32,7 @@ public class Funcionario {
 
     private String cpf;
 
-    @CreationTimestamp
-    @Column(nullable = false, columnDefinition = "datetime")
-    private OffsetDateTime nascimento;
+    private String nascimento;
 
     private String email;
 
@@ -113,11 +109,11 @@ public class Funcionario {
         this.cpf = cpf;
     }
 
-    public OffsetDateTime getNascimento() {
+    public String getNascimento(){
         return this.nascimento;
     }
 
-    public void setNascimento(OffsetDateTime nascimento) {
+    public void setNascimento(String nascimento){
         this.nascimento = nascimento;
     }
 
