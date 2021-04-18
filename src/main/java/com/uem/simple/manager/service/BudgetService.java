@@ -24,6 +24,18 @@ public class BudgetService {
         return or.findAll();
     }
 
+    public List<Orcamento> findAllByData(){
+        return or.findAllByData();
+    }
+
+    public List<Orcamento> findAllByTotalAsc(){
+        return or.findAllByTotalAsc();
+    }
+
+    public List<Orcamento> findAllByTotalDesc(){
+        return or.findAllByTotalDesc();
+    }
+    
     public Orcamento getBudgetById(Long id){
         Optional<Orcamento> budgetOpc = or.findById(id);
         Orcamento budget = null;

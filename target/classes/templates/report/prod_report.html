@@ -39,7 +39,12 @@
     <tr th:each="count: ${numContador}">
         <td class="aviso" th:text="${count}"></td>
     </tr>
-    <table class="table table-striped">
+    <table class="table table-dark">
+        <thead class="btn-danger">
+            <tr>
+                <th scope="row">Nome</th>
+            </tr>
+        </thead>
         <tbody>
             <tr th:each="prod: ${relacaoFiltrada}">
                 <td th:text="${prod.nome}"></td>	

@@ -1,5 +1,6 @@
 package com.uem.simple.manager.controller;
 
+import com.uem.simple.manager.service.BudgetService;
 import com.uem.simple.manager.service.ProductService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,9 @@ public class RelatorioController {
     @Autowired
     ProductService productService;
 
+    @Autowired
+    BudgetService budgetService;
+
 
 
     @GetMapping
@@ -29,5 +33,13 @@ public class RelatorioController {
         m.addAttribute("numContador", productService.count());
         m.addAttribute("relacaoFiltrada", productService.listagemProdutosEmFalta());
         return "report/prod_report";
+    }
+
+    @GetMapping("/budget_report")
+    public String generateBudgetReport(Model m){
+        m.addAttribute("relacaoBudget", budgetService.findAllByData());
+        m.addAttribute("totalAsc", budgetService.findAllByTotalAsc());
+        m.addAttribute("totalDesc", budgetService.findAllByTotalDesc());
+        return "report/budget_report";
     }
 }
