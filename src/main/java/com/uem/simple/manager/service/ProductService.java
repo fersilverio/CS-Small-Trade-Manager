@@ -24,6 +24,19 @@ public class ProductService {
         return pr.findAll();
     }
 
+    public List<Produto> findAllByQtd(){
+        return pr.findAllByQtd();
+    }
+
+    public String count(){
+        Integer count = pr.countProductsLowerThanMinimum().size();
+        return "AVISO: Há " + count + " produtos com quantidades abaixo do mínimo esperado no estoque, recomenda-se o reabastecimento dos produtos listados abaixo.";
+    }
+
+    public List<Produto> listagemProdutosEmFalta(){
+        return pr.listProductsLowerThanMinimum();
+    }
+
     public Produto getProductById(Long id){
         Optional<Produto> productOpc = pr.findById(id);
         Produto produto = null;
