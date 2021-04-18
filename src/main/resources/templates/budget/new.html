@@ -3,141 +3,80 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:th="http://www.thymeleaf.org"
       layout:decorate="~{layout/model}">
-
 <head>
-    <title>Small Trade Manager - Cadastro de Produtos</title>
+    <title>Small Trade Manager - Cadastrar Orçamento</title>
 </head>
 <body>
 <div class="container" layout:fragment="conteudo">
     <div class="my-3 text-center">
-        <img alt="Produto" class="img-fluid mx-3" height="50" th:src="@{/img/product.svg}" width="50"/>
-        <h2>Cadastrar Produto</h2>
+        <img alt="Produto" class="img-fluid mx-3" height="50" th:src="@{/img/budget.svg}" width="50"/>
+        <h2>Orçamentos</h2>
     </div>
 </div>
 
-<div class="container" layout:fragment="conteudo-tabela">
-    <form action="#" th:action="@{/product/add}" th:object="${produto}" method="POST">
-        <div class="form-row">
-            <div class="col-md-6 form-group">
-                <label for="name">Nome</label>
-                <input type="text" th:field="*{nome}" class="form-control"  placeholder="Headset Gamer HyperX Cloud Revolver" />
-            </div>
+<div class="container-fluid" layout:fragment="conteudo-tabela">
 
-            <div class="col-md-6 form-group">
-                <label for="amount">Fornecedor</label>
-                <select class="form-control"  th:field="*{fornecedor}"/>
-                    <option th:each="sup : ${listaFornecedores}"
-                          th:value="${sup.id}"
-                          th:text="${sup.nomeFantasia}"></option>
+    <div th:if="${aviso}" class="alert alert-danger alert-dismissible fade show" role="alert" th:text=${aviso}>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+
+    <form accept-charset="utf-8" th:action="@{/budget/add_product}" th:object="${produtoDTO}" method="POST">
+
+        <input type="hidden" th:field="*{id}">
+
+        <div class="form-row justify-content-center">
+            <div class="col-md-4 form-group">
+                <select class="form-control" th:field="*{produto}">
+                    <option th:each="prod: ${ListaProdutos}"
+                    th:value="${prod.id}"
+                    th:text="${prod.nome}"></option>
                 </select>
             </div>
-        </div>
-
-        <div class="form-row">
-
-            <div class="col-md-6 form-group">
-                <label for="unity">Unidade</label>
-                <select  th:field="*{unidade}" class="form-control">
-                    <option disabled selected value="">Escolha uma unidade de medida</option>
-                    <option th:value="CT" th:text="CT">CT</option>
-                    <option th:value="CX" th:text="CX">CX</option>
-                    <option th:value="DZ" th:text="DZ">DZ</option>
-                    <option th:value="GS" th:text="GS">GS</option>
-                    <option th:value="PA" th:text="PA">PA</option>
-                    <option th:value="PR" th:text="PR">PR</option>
-                    <option th:value="PT" th:text="PT">PT</option>
-                    <option th:value="PÇ" th:text="PÇ">PÇ</option>
-                    <option th:value="RL" th:text="RL">RL</option>
-                    <option th:value="UN" th:text="UN">UN</option>
-                    <option th:value="cm" th:text="cm">cm</option>
-                    <option th:value="cm2"th:text="cm2">cm2</option>
-                    <option th:value="g"  th:text="g">g</option>
-                    <option th:value="kg" th:text="kg">kg</option>
-                    <option th:value="l"  th:text="l">l</option>
-                    <option th:value="m"  th:text="m">m</option>
-                    <option th:value="m2" th:text="m2">m2</option>
-                    <option th:value="m3" th:text="m3">m3</option>
-                    <option th:value="ml" th:text="ml">ml</option>
-                </select>
+            <div class="col-md-1 form-group">
+                <label>Quantidade</label>
+                <input type="text" th:field="*{qtd}" class="form-control" required="true">
+            </div>
+            <div class="col-md-1 form-group">
+                <button class="btn btn-primary" type="submit">Adicionar</button>
             </div>
         </div>
 
-        <div class="form-row">
-            <div class="col-md-6 form-group">
-                <label for="gross_price">Preço Bruto</label>
-                <input class="form-control"   type="text" th:field="*{precoBruto}"  placeholder="420.00"/>
-            </div>
-            <div class="col-md-6 form-group">
-                <label for="net_price">Preço Líquido</label>
-                <input class="form-control"   type="text" th:field="*{precoLiquido}"  placeholder="420.00"/>
-            </div>
-        </div>
-
-        <div class="form-row">
-            <div class="col-md-6 form-group">
-                <label for="minimum_stock">Estoque Mínimo</label>
-                <input class="form-control"  th:field="*{estoqueMin}"  placeholder="5" type="text"/>
-            </div>
-            <div class="col-md-6 form-group">
-                <label for="maximum_stock">Estoque Máximo</label>
-                <input class="form-control"  th:field="*{estoqueMax}"  placeholder="50" type="text"/>
-            </div>
-        </div>
-
-        <div class="form-row">
-            <div class="col-md-6 form-group">
-                <label for="amount">Quantidade</label>
-                <input class="form-control"  th:field="*{qtd}"  placeholder="30" type="text"/>
-            </div>
-            <div class="col-md-6 form-group">
-                <label for="weigth">Peso</label>
-                <input class="form-control" th:field="*{peso}"  placeholder="1.270" type="text"/>
-            </div>
-        </div>
-
-
-        <div class="form-row">
-            <div class="col-md-6 form-group">
-                <label for="amount">Origem</label>
-                <select class="form-control"  th:field="*{origem}"/>
-                    <option th:each="inicial : ${T(com.uem.simple.manager.model.enums.Origem).values()}"
-                          th:value="${inicial}"
-                          th:text="${inicial.origem}"></option>
-                </select>
-            </div>
-            <div class="col-md-6 form-group">
-                <label for="weigth">Carga horária (min)</label>
-                <input class="form-control" th:field="*{cargaHoraria}"  type="text"/>
-            </div>
-        </div>
-
-        <div class="form-row">
-            <div class="col-md-6 form-group">
-                <label for="amount">Tipo</label>
-                <select class="form-control"  th:field="*{tipoProduto}"/>
-                    <option th:each="tp : ${T(com.uem.simple.manager.model.enums.TipoProduto).values()}"
-                          th:value="${tp}"
-                          th:text="${tp.tipo}"></option>
-                </select>
-            </div>
-
-            <div class="col-md-6 form-group">
-                <label for="amount">Ativo</label>
-                <select class="form-control"  th:field="*{ativo}"/>
-                    <option th:each="a : ${T(com.uem.simple.manager.model.enums.Ativo).values()}"
-                          th:value="${a}"
-                          th:text="${a.Ativo}"></option>
-                </select>
-            </div>
-        </div>
-
-
-        <button class="btn btn-primary"  type="submit" >Cadastrar</button>
-        <button class="btn btn-dark"  type="reset">Limpar</button>
-        <a class="btn btn-info" th:href="@{/product}">Voltar</a>
-
-        
     </form>
+
+    <table class="table table-hover table-striped">
+        <thead class="thead-dark text-center">
+        <tr>
+            <th scope="row">ID</th>
+            <th scope="row">Produto</th>
+            <th scope="row">Preço Unitário</th>
+            <th scope="row">Quantidade</th>
+            <th scope="row">Excluir</th>
+        </tr>
+        </thead>
+        <tbody class="text-center">
+            <tr th:each="produto: ${lista}">
+                <td th:text="${produto.id}"></td>
+                <td th:text="${produto.produto.nome}"></td>
+                <td th:text="${produto.precoUnitario}"></td>
+                <td th:text="${produto.qtd}"></td>
+                <td>
+                    <a class="btn btn-danger" th:href="@{'/budget/delete_item/' + ${produtoDTO.id} + '/' + ${produto.id}}">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot class="text-right bg-dark text-white">
+            <tr>
+                <td colspan="6" th:text="'Total: ' + ${total}"></td>
+            </tr>
+        </tfoot>
+    </table>
+
 </div>
+
 </body>
-</html>
+
+</html> 

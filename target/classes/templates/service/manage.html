@@ -21,11 +21,11 @@
 		<div class="form-row">
 			<div class="col-md-6 form-group">
 				<label for="name">Nome</label>
-				<input type="text" th:field="*{nome}" class="form-control" placeholder="Formatação com Windows 10"/>
+				<input type="text" th:field="*{nome}" class="form-control" placeholder="Formatação com Windows 10" th:readonly="!${update}"/>
 			</div>
 			<div class="col-md-6 form-group">
 				<label for="unity">Tipo</label>
-				<select class="form-control"  th:field="*{tipo}">
+				<select class="form-control"  th:field="*{tipo}" th:disabled="!${update}">
 					<option th:each="tp : ${T(com.uem.simple.manager.model.enums.TipoServico).values()}"
 					 th:value="${tp}"
 					 th:text="${tp.tipoServico}"></option>
@@ -37,11 +37,11 @@
 		<div class="form-row">
 			<div class="col-md-6 form-group">
 				<label for="price">Preço</label>
-				<input class="form-control"   type="text" th:field="*{preco}"  placeholder="50.00"/>
+				<input class="form-control"   type="text" th:field="*{preco}"  placeholder="50.00" th:readonly="!${update}"/>
 			</div>
 			<div class="col-md-6 form-group">
 				<label for="workload">Carga Horária (min)</label>
-				<input type="text" th:field="*{cargaHoraria}" class="form-control" placeholder="50"/>
+				<input type="text" th:field="*{cargaHoraria}" class="form-control" placeholder="50" th:readonly="!${update}"/>
 			</div>
 		</div>
         <div th:hidden="!${update}">
