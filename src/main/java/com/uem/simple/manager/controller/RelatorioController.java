@@ -2,6 +2,7 @@ package com.uem.simple.manager.controller;
 
 import com.uem.simple.manager.service.BudgetService;
 import com.uem.simple.manager.service.ProductService;
+import com.uem.simple.manager.service.VendaService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,8 @@ public class RelatorioController {
     @Autowired
     BudgetService budgetService;
 
+    @Autowired
+    VendaService vendaService;
 
 
     @GetMapping
@@ -41,5 +44,11 @@ public class RelatorioController {
         m.addAttribute("totalAsc", budgetService.findAllByTotalAsc());
         m.addAttribute("totalDesc", budgetService.findAllByTotalDesc());
         return "report/budget_report";
+    }
+
+    @GetMapping("/venda_report")
+    public String generateVendaReport(Model m){
+        m.addAttribute("relacaoVenda", vendaService.findAllByData());
+        return "report/venda_report";
     }
 }

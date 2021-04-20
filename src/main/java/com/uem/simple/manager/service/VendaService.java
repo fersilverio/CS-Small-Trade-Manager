@@ -24,6 +24,10 @@ public class VendaService {
         return vr.findAll();
     }
 
+    public List<Venda> findAllByData(){
+        return vr.findAllByData();
+    }
+
     public Venda getVendaById(Long id){
         Optional<Venda> saleOpc = vr.findById(id);
         Venda sale = null;
@@ -35,5 +39,6 @@ public class VendaService {
         }
         return sale;
     }
+
 
 }
