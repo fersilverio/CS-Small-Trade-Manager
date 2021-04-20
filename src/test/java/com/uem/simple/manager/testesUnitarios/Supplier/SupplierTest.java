@@ -1,4 +1,4 @@
-package com.uem.simple.manager.model.Supplier;
+package com.uem.simple.manager.testesUnitarios.Supplier;
 
 import org.junit.jupiter.api.Test;
 

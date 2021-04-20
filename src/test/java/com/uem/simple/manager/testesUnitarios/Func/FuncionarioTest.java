@@ -1,17 +1,17 @@
-package com.uem.simple.manager.controller;
+package com.uem.simple.manager.testesUnitarios.Func;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.math.BigDecimal;
+
+import com.uem.simple.manager.model.Funcionario;
+import com.uem.simple.manager.model.ItemOrcamento;
 
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 
-import java.math.BigDecimal;
-
-import com.uem.simple.manager.model.ItemOrcamento;
-import com.uem.simple.manager.model.Funcionario;
-
-public class aplicationTest {
+public class FuncionarioTest {
 
 	@Test
 	public void testFuncionarioCPF() throws Exception {

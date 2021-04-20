@@ -1,8 +1,10 @@
-package com.uem.simple.manager.model;
+package com.uem.simple.manager.testesUnitarios.Prod;
 
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+
+import com.uem.simple.manager.model.Produto;
 
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
