@@ -6,6 +6,7 @@
 
 <head>
     <title>Small Trade Manager - Consultar Relatório de Orçamentos</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
 </head>
 <body>
 <div class="container" layout:fragment="conteudo">
@@ -18,7 +19,7 @@
    
 </div>
 
-<div class="container-fluid" layout:fragment="conteudo-tabela" id="geraPDF">
+<div class="container-fluid" layout:fragment="conteudo-tabela" id="content">
     <label>Ordenado por Data</label>
     <table class="table table-hover table-striped">
         <thead class="thead-dark">
@@ -93,14 +94,28 @@
 
 
     <a class="btn btn-info" th:href="@{/report}">Voltar</a>
-    <button type="button" onclick="push('')">Click Me!</button> 
+    <input type="button" style="color: #E30B15;" id="cmd" onclick="myFunction(); return false;" value="Gerar pdf" />
+
+    <script>
+        function myFunction() {
+            var doc = new jsPDF();
+            var specialElementHandlers = {
+                '#editor': function (element, renderer) {
+                    return true;
+                }
+            };
+
+            $('#cmd').click(function () {
+                doc.fromHTML($('#content').html(), 15, 15, {
+                    'width': 170,
+                        'elementHandlers': specialElementHandlers
+                });
+                doc.save('relatorio-orcamento.pdf');
+            });
+        }
+    </script>
 </div>
 
-<script type="text/javascript">
-    function push (){
-        console.log("ola");
-    };
-</script>
 
 </body>
 </html>
