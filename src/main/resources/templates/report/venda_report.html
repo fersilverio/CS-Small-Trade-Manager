@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout/model}">
+
+<head>
+    <title>Small Trade Manager - Consultar Relatório de Vendas</title>
+</head>
+<body>
+<div class="container" layout:fragment="conteudo">
+    <div class="my-3 text-center">
+        <img alt="Relatório de Vendas" class="img-fluid mx-3" height="50" th:src="@{/img/report.svg}" width="50"/>
+        <h2>Relatório de Vendas</h2>
+    </div>
+
+   
+</div>
+
+<div class="container-fluid" layout:fragment="conteudo-tabela" id="content">
+    <label>Ordenado por Data</label>
+    <table class="table table-hover table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="row">Id</th>
+                <th scope="row">Data</th>
+                <th scope="row">Total</th>
+                <th scope="row">Acessar Orçamento</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="budget: ${relacaoVenda}">
+                <td th:text="${budget.id}"></td>
+                <td th:text="${budget.data}"></td>
+                <td th:text="${budget.total}"></td>
+                <td>
+                    <a class="btn btn-info" th:href="@{'/venda/view/' + ${budget.id}}">
+                        <i class="fas fa-eye"></i>
+                    </a>
+                </td>		
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -19,7 +19,7 @@
         <form accept-charset="utf-8" th:action="@{/budget/add_product}" th:object="${produtoDTO}" method="POST">
 
             <input type="hidden" th:field="*{id}">
-    
+
             <div class="form-row justify-content-center">
                 <div class="col-md-4 form-group">
                     <select class="form-control" th:field="*{produto}">
@@ -30,16 +30,18 @@
                 </div>
                 <div class="col-md-1 form-group">
                     <label>Quantidade</label>
+                </div>
+                <div class="col-md-1 form-group">
                     <input type="text" th:field="*{qtd}" class="form-control" required="true">
                 </div>
                 <div class="col-md-1 form-group">
                     <button class="btn btn-primary" type="submit">Adicionar</button>
                 </div>
             </div>
-    
+
         </form>
     </div>
-    
+
     <table class="table table-hover table-striped">
         <thead class="thead-dark text-center">
         <tr>
@@ -70,9 +72,11 @@
         </tfoot>
     </table>
 
+    <a class="btn btn-info" th:href="@{/budget}">Voltar</a>
+
 </div>
 
 
 
 </body>
-</html>
+</html> 

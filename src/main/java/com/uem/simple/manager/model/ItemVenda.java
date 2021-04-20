@@ -45,6 +45,9 @@ public class ItemVenda {
         this.setPrecoTotal(precoUnitario.multiply(new BigDecimal(qtd)));
     }
 
+    public BigDecimal getValorTotal(){
+        return precoUnitario.multiply(new BigDecimal(qtd));
+    }
 
     public Long getId() {
         return this.id;

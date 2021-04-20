@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout/model}">
+
+<head>
+    <title>Small Trade Manager - Consultar Relatório</title>
+</head>
+<body>
+<div class="container" layout:fragment="conteudo">
+    <div class="my-3 text-center">
+        <img alt="Produto" class="img-fluid mx-3" height="50" th:src="@{img/report.svg}" width="50"/>
+        <h2>Relatórios</h2>
+    </div>
+
+    <div class="align-middle">
+        <div class="text-center">
+            <div class="row">
+                <div class="col-2 justify-content-around d-flex flex-column">
+                    <a class="btn btn-primary" th:href="@{/report/prod_report}">Gerar relatório de produtos</a>
+                    </br>
+                    <a class="btn btn-primary" th:href="@{/report/budget_report}">Gerar relatório de orçamentos</a>
+                    <a class="btn btn-primary" th:href="@{/report/venda_report}">Gerar relatório de vendas</a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>

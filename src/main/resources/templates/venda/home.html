@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout/model}">
+
+<head>
+	<title>Small Trade Manager &#8211; Consultar Vendas</title>
+</head>
+
+<body>
+	
+	<div class="container" layout:fragment="conteudo">
+		<div class="my-3 text-center">
+			<img alt="Venda" class="img-fluid mx-3" height="50" th:src="@{/img/sale.svg}" width="50"/>
+			<h2>Venda</h2> 
+			<a class="btn btn-primary" th:href="@{/venda/new}"><i class="fas fa-plus"></i> Cadastro</a>
+		</div>
+	</div>
+
+	
+
+	<div class="container-fluid" layout:fragment="conteudo-tabela">
+
+		<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+			?
+  		</button>
+
+		  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+				<h3 class="Guia para controle de produtos" id="exampleModalLabel">Guia para controle de produtos</h3>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				</div>
+				<div class="modal-body">
+					<p>Esta página destina-se a funcionalidade de Vendas. Uma venda, por natureza, usa dados tanto de clientes, quanto de produtos.</p>
+					<h3>Home de Vendas</h3>
+					<p>
+						Quando selecionada a aba "Vendas", o programa irá direcionar o usuário para a página inicial de vendas que contém uma relação
+						com todas as vendas cadastrados no sistema e também com alguns botões. Vale resaltar que devido a natureza da Venda, tanto um cliente quanto um produto deveram ser cadastrados no sistema para o uso de operações de Venda.	
+					</p>
+					<p>O botão de direcionamento para as funcionalidades de Venda, no menu de navegação do sistema:</p>
+					<img th:src=@{img/help/vendas.png}>
+
+					<p>
+						No final da linha de cada venda na tabela, temos a coluna denominada "Gerenciar",
+						que possui os seguintes botões.
+					</p>
+
+					<img th:src=@{img/help/gerenciar.png}>
+
+					<p>O primeiro botão possui a funcionalidade de direcionar o usuário para a tela de visualização da venda em questão.</p>
+					<img th:src=@{img/help/read.png}>
+					<p>O segundo botão possui a funcionalidade de direcionar o usuário para a tela de atualização (ou alteração de dados) da venda em questão.</p>
+					<img th:src=@{img/help/update.png}>
+					<p>O terceiro e último botão possui a função de deletar a venda em questão.</p>
+					<img th:src=@{img/help/delete.png}>
+
+					<p>Por fim, o botão a seguir direciona o usuário para o cadastro de novas vendas.</p>
+					<img th:src=@{img/help/cadastro.png}>
+					
+					<h3>Cadastro de vendas</h3>
+					<p>Uma venda se refere a um cliente, que pode comprar um ou mais itens. Portanto, é necessário selecionar tanto o cliente quanto produtos no cadastro de vendas. </p>
+					<p>As duas áreas de seleção se assemelham, mudando apenas os itens. Na primeira ocorre a escolha de clientes, e na segunda a escolha de produtos. </p>
+					<img class="imagem" th:src=@{img/help/dropDown.png}>
+					<p>O campo de texto ao lado é para o usuário colocar a quantidade daquele determinado produto escolhido na área de seleção a esquerda.</p>
+					<p>Para alterar o valor da quantidade de um produto já cadastrado, basta selecionar o produto na área de seleção e colocar a quantidade que deseja somar ou subtrair na quantidade.</p>
+					<p> - Um número positivo para aumentar a quantidade;</p>
+					<p> - Um número negativo para diminuir a quantidade.</p>
+					<img class="imagem" th:src=@{img/help/quantidade.png}>
+
+					<p>O botão ao lado direito é para adicionar o determinado produto e a sua quantidade desejada e, caso o produto já esteja inserido no orçamento, então somente a sua quantidade será alterada.</p>
+					<img class="imagem" th:src=@{img/help/adicionar.png}>
+
+					<p>O botão em cada linha de um produto inserido no orçamento tem como finalidade excluir aquele deterinado produto.</p>
+                	<img class="imagem" th:src=@{img/help/delete.png}>
+
+					<h3>Visualização da venda</h3>
+					<p>Ao selecionar o botão para visualizar a venda as informações aparecerão para o usuário, porém sem a possibilidade de alterá-las.</p>
+					<p>Após visualizar a venda e se desejar retornar para a página inicial o botão abaixo realiza essa tarefa.</p>
+					<img  th:src=@{img/help/voltar.png}>
+					<p>O botão voltar está presente em todas as telas do controle de produtos com exceção da inicial.</p>
+					<h3>Atualização da venda</h3>
+					<p>Após selecionar o botão de atualização da venda as informações da venda selecionada aparecerão e também poderão ser alteradas.</p>
+					<p>Para confirmar as alterações o botão abaixo possui a finalidade de realizar essa tarefa.</p>
+					<img  th:src=@{img/help/atualizar.png}>
+				
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+				</div>
+			</div>
+			</div>
+		</div>
+
+
+		<table class="table table-hover table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="row">ID</th>
+					<th scope="row">Cliente</th>
+					<th scope="row">Data</th>
+                    <th scope="row">Valor Total</th>
+					<th scope="row">Gerenciar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="venda: ${ListaVendas}">
+                    <td th:text="${venda.id}"></td>
+					<td th:text="${venda.cliente.nome}"></td>
+					<td th:text="${venda.data}"></td>
+                    <td th:text="'R$ ' + ${venda.total}"></td>		
+					<td>
+						<a class="btn btn-info" th:href="@{'/venda/view/' + ${venda.id}}">
+							<i class="fas fa-eye"></i>
+						</a>
+						<a class="btn btn-primary" th:href="@{'/venda/edit/' + ${venda.id} }">
+							<i class="fas fa-edit"></i>
+						</a>
+						<a class="btn btn-danger" th:href="@{'/venda/delete/' + ${venda.id} }">
+							<i class="fas fa-trash"></i>
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</body>
+
+</html>
