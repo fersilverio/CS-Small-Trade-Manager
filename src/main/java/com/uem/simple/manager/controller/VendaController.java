@@ -37,22 +37,20 @@ public class VendaController {
     private final VendaService vendaService;
     private final VendaRepository vendaRepository;
     private final ItemVendaRepository itemVendaRepository;
-    private final ClienteRepository clienteRepository;
     private final ClienteService clienteService;
     private final ProductService produtoService;
 
     
     @Autowired
-    public VendaController (VendaService vendaService, VendaRepository vendaRepository,ItemVendaRepository itemVendaRepository, ClienteRepository clienteRepository, ClienteService clienteService, ProductService produtoService){
+    public VendaController (VendaService vendaService, VendaRepository vendaRepository,ItemVendaRepository itemVendaRepository, ClienteService clienteService, ProductService produtoService){
         this.vendaService = vendaService;
         this.vendaRepository = vendaRepository;
         this.itemVendaRepository = itemVendaRepository; 
-        this.clienteRepository = clienteRepository;
         this.clienteService = clienteService;
         this.produtoService = produtoService;
     }
     @GetMapping
-    public String product (Model m){
+    public String venda (Model m){
         m.addAttribute("ListaVendas", vendaService.findAll());
         return "venda/home";
     }

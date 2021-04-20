@@ -3,11 +3,9 @@ package com.uem.simple.manager.model;
 import com.uem.simple.manager.model.enums.FormaPagamento;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,12 +20,11 @@ public class Venda {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "venda_cliente_id", nullable = false)
+    @JoinColumn(name = "venda_cliente_id")
     private Cliente cliente;
 
-    @CreationTimestamp
-    @Column(nullable = false, columnDefinition = "datetime")
-    private OffsetDateTime data;
+    private String data;
+
 
     @OneToMany(mappedBy = "venda", cascade = CascadeType.ALL)
     private List<ItemVenda> itens = new ArrayList<>();
@@ -37,13 +34,12 @@ public class Venda {
 
     private BigDecimal total;
 
-    public void calcularValorTotal() {
-        getItens().forEach(ItemVenda::calcularPrecoTotal);
-
-        this.total = getItens().stream()
-                .map(item -> item.getPrecoTotal())
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
-    }
+    public void getValorTotalItens() {
+		this.total = getItens().stream()
+				.map(ItemVenda::getValorTotal)
+				.reduce(BigDecimal::add)
+				.orElse(BigDecimal.ZERO);
+	}
 
 
     public Long getId() {
@@ -62,11 +58,11 @@ public class Venda {
         this.cliente = cliente;
     }
 
-    public OffsetDateTime getData() {
+    public String getData() {
         return this.data;
     }
 
-    public void setData(OffsetDateTime data) {
+    public void setData(String data) {
         this.data = data;
     }
 
