@@ -15,18 +15,18 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
-import java.util.Optional;
+//import java.util.Optional;
 
-import com.uem.simple.dto.AddProdutoDTO;
+//import com.uem.simple.dto.AddProdutoDTO;
 import com.uem.simple.dto.AddSalesDTO;
 import com.uem.simple.manager.model.Venda;
 import com.uem.simple.manager.model.ItemVenda;
-import com.uem.simple.manager.model.Cliente;
-import com.uem.simple.manager.model.Cidade;
+//import com.uem.simple.manager.model.Cliente;
+//import com.uem.simple.manager.model.Cidade;
 import com.uem.simple.manager.repository.VendaRepository;
 import com.uem.simple.manager.repository.ItemVendaRepository;
-import com.uem.simple.manager.repository.ClienteRepository;
-import com.uem.simple.manager.repository.CidadeRepository;
+//import com.uem.simple.manager.repository.ClienteRepository;
+//import com.uem.simple.manager.repository.CidadeRepository;
 import com.uem.simple.manager.service.VendaService;
 import com.uem.simple.manager.service.ClienteService;
 import com.uem.simple.manager.service.ProductService;

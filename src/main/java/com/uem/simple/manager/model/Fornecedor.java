@@ -6,6 +6,12 @@ import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import br.com.caelum.stella.bean.validation.CNPJ;
 
 // import java.time.OffsetDateTime;
 
@@ -19,12 +25,18 @@ public class Fornecedor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+	@NotNull(message = "O Campo Razão Social é obrigatório")
     private String razaoSocial;
 
+	@NotNull
+	@Size(min=2, max=30, message = "O campo nome Fantasia eh limitado!")
     private String nomeFantasia;
 
+	
     private String inscricaoEstadual;
 
+	@CNPJ(message = "DEU RUIM!")
+	@NotNull
     private String cnpj;
 
     public Long getId() {
@@ -107,11 +119,9 @@ public class Fornecedor {
 		this.celular = celular;
 	}
 
-	// @CreationTimestamp
-    // @Column(nullable = false)
     private String fundacao;
 
-	@Email
+	@Email(message = "Email invalido.")
     private String email;
 
     @Embedded
